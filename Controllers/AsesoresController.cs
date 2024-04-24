@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace RiwiSalud.Controllers
 {
+    
     public class AsesoresController : Controller
     {
         /* Conexion con la db */
@@ -30,9 +31,25 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Registro()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Registro(Asesor asesor)
+        {
+
+            _context.Asesores.Add(asesor);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("");
+        }
+
         public IActionResult InformacionUsuario()
         {
             return View();
         }
+
     }
 }

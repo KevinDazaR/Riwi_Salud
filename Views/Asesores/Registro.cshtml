@@ -1,5 +1,6 @@
+@model Asesor
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Registro";
 }
 
 <style>
@@ -144,24 +145,42 @@
 <div class="contenedor">
     <div class="row">
         <div class="col">
-        <h2 class="text-primary text-center mb-3">Bienvenido a <b>Riwi Salud</b></h2>
-            <form asp-controller="Usuarios" asp-action="Index" method="post">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Seleccione el tipo de docuento</label>
-                    <select class="form-control" name="TipoDocumento" id="exampleFormControlSelect1">
-                        <option disabled selected> Tipo de Documento</option>
-                        <option value="Cedula">CC - Cèdula de Ciudadanìa</option>
-                        <option value="Targeta de Identidad">TI - Tarjeta de Identidad</option>
-                        <option value="Registro Civil">RC - Registro Civil de Nacimiento</option>
-                        <option value="Pasaporte">PS - Pasaporte</option>
-                    </select>
+        <h2 class="text-primary text-center mb-3">Registrate en <b>Riwi Salud</b></h2>
+            <form asp-controller="Asesores" asp-action="Registro" method="post">
                 
                 <div class="form-group mt-3">
-                    <label for="exampleFormControlTextarea1">Ingrese su nùmero de documento</label>
-                    <input class="form-control" asp-form="NumeroDocumento" placeholder="Ejemplo: 100393213">
+                    <label asp-for="Nombres">Ingrese su Nombre:</label>
+                    <input asp-for="Nombres" class="form-control" type="text"  placeholder="Ejemplo: Carlos">
+                    <span asp-validation-for="Nombres" class="text-danger"></span>
                 </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Apellidos">Ingrese su Apellido:</label>
+                    <input class="form-control" type="text" placeholder="Ejemplo: Ruiz">
+                    <span asp-validation-for="Apellidos" class="text-danger"></span>
+                    
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Correo">Ingrese su Correo:</label>
+                    <input asp-for="Correo" class="form-control" type="email" placeholder="Ejemplo: Carlos.121@gmail.com">
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Contraseña">Ingrese su Contraseña:</label>
+                    <input asp-for="Contraseña" class="form-control" type="password" name="" id="" placeholder="**********">
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Modulo">Ingrese su Modulo:</label>
+                    <input asp-for="Modulo" class="form-control" type="text"  placeholder="Ejemplo: MCE023">
+                    <span asp-validation-for="Modulo" class="text-danger"></span>
+                </div>
+
                 <div class="form-group d-flex justify-content-center mt-3">
-                    <button type="sumbit" class="btn btn-primary">Ingresar</button>
+                    <button asp-form="Asesores" asp-action="Menu" class="btn btn-primary">Registrarse</button>
                 </div>
             </form>
         </div>
