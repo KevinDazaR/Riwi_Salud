@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RiwiSalud")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+738edb3a6dbeaf60635d5bb248d75bba795b65da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+545062ce69817fe68496dd31df7e3d983cfca1ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("RiwiSalud")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RiwiSalud")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
