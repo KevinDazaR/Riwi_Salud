@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj": {}
+    "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj": {}
   },
   "projects": {
-    "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj": {
+    "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj",
+        "projectUniqueName": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
         "projectName": "RiwiSalud",
-        "projectPath": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj",
-        "packagesPath": "/Users/kevindazar/.nuget/packages/",
-        "outputPath": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/obj/",
+        "projectPath": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
+        "packagesPath": "C:\\Users\\Fli Ortega García\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/kevindazar/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Fli Ortega García\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -71,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
