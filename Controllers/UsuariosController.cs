@@ -39,6 +39,7 @@ namespace RiwiSalud.Controllers
 
             if (usuario != null && NumeroDocumento == usuario.NumeroDocumento)
             {
+                /* Apartado para obtener datos a cookies */
                 Response.Cookies.Append("Id", usuario.Id.ToString());
                 Response.Cookies.Append("Nombre", usuario.Nombres);
                 Response.Cookies.Append("Documento", usuario.NumeroDocumento);
@@ -47,6 +48,8 @@ namespace RiwiSalud.Controllers
                     new Claim(ClaimTypes.Name, usuario.Nombres),
                     new Claim("Documento", usuario.NumeroDocumento),
                 };
+
+                /* Guardian */
 
                 var claimsIndentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
