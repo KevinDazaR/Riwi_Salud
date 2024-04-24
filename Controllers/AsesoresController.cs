@@ -41,6 +41,16 @@ namespace RiwiSalud.Controllers
             return RedirectToAction("");
         }
 
+          public IActionResult Inicio()
+        {
+            return View();
+        }
+
+        public IActionResult InformacionUsuario()
+        {
+            return View();
+        }
+
 
     }
 }
