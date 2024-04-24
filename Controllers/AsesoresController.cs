@@ -20,19 +20,15 @@ namespace RiwiSalud.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index()
-        /* Constructor Usuarios */
-        public AsesoresController(BaseContext context){
-            _context = context;
-        }
-
-        /* Actions para las vistas  */
-
-        public async Task<IActionResult> Index()
+                public async Task<IActionResult> Index()
         {
             return View();
         }
+        /* Constructor Usuarios */
+
+        /* Actions para las vistas  */
+
+
 
         public IActionResult Inicio()
         {
