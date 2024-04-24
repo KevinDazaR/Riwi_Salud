@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/riwip5-021/snap/riwi/Riwi_Salud
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/riwip5-021/snap/riwi/Riwi_Salud/Views/Asesores/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXNlc29yZXMvUmVnaXN0cm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/riwip5-021/snap/riwi/Riwi_Salud/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
