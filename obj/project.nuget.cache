@@ -1,11 +1,14 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "tmEbHTvR/ealpZTiiiMG3vQcJTZK2ER+1cmM3p9n4eaX382b0lba8ott7/LEwWRVcT34mVtm0r3Yo1d5yYRl6A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
   "expectedPackageFiles": [],
 =======
+=======
+>>>>>>> c286c91ee64cebc667398eeb6fd23a12bddef4b6
   "dgSpecHash": "h22HdadPwN15pF5EG53pBzMTZWpykVbXcP0V+QmQv1+aQol/k0kqjlwA7gFnlTY8CpT0DVqq3SHRI6NwlF7w9A==",
   "success": true,
   "projectFilePath": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj",
@@ -26,6 +29,9 @@
     "/Users/kevindazar/.nuget/packages/mysqlconnector/2.3.5/mysqlconnector.2.3.5.nupkg.sha512",
     "/Users/kevindazar/.nuget/packages/pomelo.entityframeworkcore.mysql/8.0.2/pomelo.entityframeworkcore.mysql.8.0.2.nupkg.sha512"
   ],
+<<<<<<< HEAD
 >>>>>>> 90c12d3e6cad044c5abd994d0611b225f25684a5
+=======
+>>>>>>> c286c91ee64cebc667398eeb6fd23a12bddef4b6
   "logs": []
 }

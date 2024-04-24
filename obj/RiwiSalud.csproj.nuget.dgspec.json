@@ -60,7 +60,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> c286c91ee64cebc667398eeb6fd23a12bddef4b6
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -71,7 +74,10 @@
               "version": "[8.0.2, )"
             }
           },
+<<<<<<< HEAD
 >>>>>>> 90c12d3e6cad044c5abd994d0611b225f25684a5
+=======
+>>>>>>> c286c91ee64cebc667398eeb6fd23a12bddef4b6
           "imports": [
             "net461",
             "net462",
