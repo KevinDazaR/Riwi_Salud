@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Menù de opciones";
+    ViewData["Title"] = "Menù - Citas mèdicas";
 }
 
 <style>
@@ -162,33 +162,41 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuCitasMedicas">(C) Citas Mèdicas</a>
+                        <a class="border border-primary" href="">(MCI) Confirmaciòn de Cita</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary"asp-controller="Usuarios" asp-action="MenuMedicamentos">(M) Medicamentos</a>
+                        <a class="border border-primary"href="">(MCG) Consulta Mèdico General</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuPagoFacturas">(P) Pago de Facturas</a>
+                        <a class="border border-primary" href="">(MCP) Consulta de Psiquiatrìa</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(I) Informaciòn General</a>
+                        <a class="border border-primary" href="">(MCO) Consulta de Ortopedìa</a>
                     </div>
                   
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(SC) Sale de Consulta</a>
+                        <a class="border border-primary" href="">(MCD) Crecimiento y Desarrollo</a>
                     </div>
                     <div class="col d-flex mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(TP) Turno Prioritario</a>
+                        <a class="border border-primary" href="">(MCC) Consulta de Cardiologìa </a>
+                    </div>
+                    <div class="w-100"></div>
+                    
+                    <div class="col d-flex justify-content-end  mt-3">
+                        <a class="border border-primary" href="">(MCN) Consulta de Neurologìa </a>
+                    </div>
+                    <div class="col d-flex mt-3">
+                        <a class="border border-primary" href="">(MNE) Consulta de Neumologìa </a>
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+                <a class="btn-regresar text-center" href=""> < Regresar</a>
         </div>
     </div>
 </div>

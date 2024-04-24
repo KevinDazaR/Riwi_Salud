@@ -30,6 +30,24 @@ namespace RiwiSalud.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> MenuCitasMedicas()
+        {
+            return View();
+        }
+        public async Task<IActionResult> MenuMedicamentos()
+        {
+            return View();
+        }
+        public async Task<IActionResult> MenuPagos()
+        {
+            return View();
+        }
+        public async Task<IActionResult> Turno()
+        {
+            return View();
+        }
+
         // public async Task<IActionResult> Index(string search){
         //     //Coleccion de registros u objetos  
         //     var users = from user in _context.Users select user;

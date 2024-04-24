@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Menù de opciones";
+    ViewData["Title"] = "Menù - Pagos";
 }
 
 <style>
@@ -142,6 +142,9 @@
                 <a asp-controller="Home" asp-action="Index">Ingreso</a>
                 <span>></span>
                 <a asp-controller="Usuarios" asp-action="Menu">Menù</a>
+                <span>></span>
+                <a asp-controller="Usuarios" asp-action="Menu">Pago de facturas</a>
+                <span>></span>
             </nav>
         </div>
         <div class="top-mid">
@@ -162,29 +165,28 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuCitasMedicas">(C) Citas Mèdicas</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(POR) Pago de Ordenes</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary"asp-controller="Usuarios" asp-action="MenuMedicamentos">(M) Medicamentos</a>
+                        <a class="border border-primary"asp-controller="Usuarios" asp-action="Turno">(PCO) Pago de Consulta</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuPagoFacturas">(P) Pago de Facturas</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PME) Pago de Medicamentos</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(I) Informaciòn General</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PPP) Pago Plan Particular</a>
                     </div>
-                  
                     <div class="w-100"></div>
 
-                    <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(SC) Sale de Consulta</a>
+                    <div class="col d-flex justify-content-end mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PCP) Certificado de Paz y Salvo</a>
                     </div>
-                    <div class="col d-flex mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(TP) Turno Prioritario</a>
+                    <div class="col d-flex  mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PPC) Pago Plan Complementario</a>
                     </div>
                 </div>
 
