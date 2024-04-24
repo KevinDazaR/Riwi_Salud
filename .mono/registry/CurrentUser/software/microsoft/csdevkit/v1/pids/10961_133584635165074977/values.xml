@@ -2,7 +2,7 @@
   <value name="extname" type="string">ms-dotnettools.csdevkit</value>
   <value name="VSInstanceId" type="string">8620ed71-c43a-42a4-9283-526684287f671713989913676</value>
   <value name="ShutdownReason" type="int">3</value>
-  <value name="StillAlive" type="qword">133584668176097080</value>
+  <value name="StillAlive" type="qword">133584674176220587</value>
   <value name="PID" type="int">10961</value>
   <value name="VSIs64BitProcess" type="string">True</value>
   <value name="vscodeversion" type="string">1.82.2</value>
