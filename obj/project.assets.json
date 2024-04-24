@@ -719,47 +719,24 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "/home/riwip5-021/.nuget/packages/": {}
-=======
-    "C:\\Users\\jhoan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
->>>>>>> e043fd194a42452640f794922ae4bb9f0be0135c
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "/home/riwip5-021/snap/riwi/Riwi_Salud/RiwiSalud.csproj",
       "projectName": "RiwiSalud",
       "projectPath": "/home/riwip5-021/snap/riwi/Riwi_Salud/RiwiSalud.csproj",
       "packagesPath": "/home/riwip5-021/.nuget/packages/",
       "outputPath": "/home/riwip5-021/snap/riwi/Riwi_Salud/obj/",
-=======
-      "projectUniqueName": "C:\\Users\\jhoan\\OneDrive\\Escritorio\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
-      "projectName": "RiwiSalud",
-      "projectPath": "C:\\Users\\jhoan\\OneDrive\\Escritorio\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
-      "packagesPath": "C:\\Users\\jhoan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhoan\\OneDrive\\Escritorio\\Riwi_Salud\\Riwi_Salud\\obj\\",
->>>>>>> e043fd194a42452640f794922ae4bb9f0be0135c
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-<<<<<<< HEAD
         "/home/riwip5-021/.nuget/NuGet/NuGet.Config"
-=======
-        "C:\\Users\\jhoan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> e043fd194a42452640f794922ae4bb9f0be0135c
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -806,11 +783,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
->>>>>>> e043fd194a42452640f794922ae4bb9f0be0135c
       }
     }
   },
@@ -819,11 +792,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-<<<<<<< HEAD
       "message": "Problem reading the cache file /home/riwip5-021/snap/riwi/Riwi_Salud/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Problem reading the cache file C:\\Users\\jhoan\\OneDrive\\Escritorio\\Riwi_Salud\\Riwi_Salud\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> main
     }
   ]
 }
