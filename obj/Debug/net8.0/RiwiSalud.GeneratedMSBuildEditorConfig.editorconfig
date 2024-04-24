@@ -70,6 +70,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/MenuCitasMedicas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudUNpdGFzTWVkaWNhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/MenuMedicamentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudU1lZGljYW1lbnRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/MenuPagos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudVBhZ29zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/Usuarios/Turno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvVHVybm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

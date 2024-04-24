@@ -1,0 +1,194 @@
+@{
+    ViewData["Title"] = "Menù de opciones";
+}
+
+<style>
+    .container{
+        width: 90%;
+        min-width: 85%;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin:auto;
+        background-color: rgba(227, 227, 227, 0.215);
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .top-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 1px solid black;
+    }
+    
+    .top-left{
+        width: auto;
+    }
+
+    .top-left nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .top-left nav a, .top-left nav span{
+        margin-right: 5px;
+    }
+
+    .top-mid{
+        width: auto;
+    }
+
+    .user-box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        align-content: center;
+    }
+    .user-box i{
+        font-size: 12px;
+        color:blue;
+        border: 1px solid blue;
+        padding: 4px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .top-right{
+        width: auto;
+    }
+    .top-right i{
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:red;
+        border: 1px solid red;
+        padding: 5px;
+        border-radius: 50%;
+    }
+
+      .top-right i:hover{
+        font-size: 12px;
+        color:black;
+        background-color: red;
+        border: 1px solid red;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 40%;
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+        transition-duration: 0.2s;
+    }
+
+    .container-contain {
+        width: 100%;
+        @* background-color: rgb(200, 255, 3); *@
+        height: 300px;
+    }
+
+    h3{
+        color: rgb(156, 189, 37);
+    }
+
+    .container-opciones{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+
+    .col a{
+        width: 300px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .row a:hover{
+        background-color: blue;
+        color: white;
+    }
+
+    .btn-regresar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .btn-regresar:hover{
+        width: 100px !important;
+        background-color: blue !important;
+        color: white !important;
+        text-decoration: underline !important;
+
+    }
+
+</style>
+
+<div class="contenedor">
+    <div class="top-container">
+        <div class="top-left">
+            <nav>
+                <a asp-controller="Home" asp-action="Index">Ingreso</a>
+                <span>></span>
+                <a asp-controller="Usuarios" asp-action="Menu">Menù</a>
+            </nav>
+        </div>
+        <div class="top-mid">
+            <div class="user-box">
+                <i class="fa-regular fa-user"></i>
+                <p>CC: </p>
+                <p> 10041235 - </p>
+                <p>Pepito Pèrez Jimenez</p>
+            </div>
+        </div>
+        <div class="top-right">
+            <i class="fa-solid fa-x"></i>
+        </div>
+    </div>
+
+    <div class="container-contain mt-4">
+        <div class="col container-opciones text-center">
+        <h3 class="text-center mt-3">Selecione una opciòn</h3>
+                <div class="row">
+                    <div class="col d-flex justify-content-end mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuCitasMedicas">(C) Citas Mèdicas</a>
+                    </div>
+
+                    <div class="col d-flex  mt-3">
+                        <a class="border border-primary"asp-controller="Usuarios" asp-action="MenuMedicamentos">(M) Medicamentos</a>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col d-flex justify-content-end mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuPagoFacturas">(P) Pago de Facturas</a>
+                    </div>
+                    <div class="col d-flex  mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(I) Informaciòn General</a>
+                    </div>
+                  
+                    <div class="w-100"></div>
+
+                    <div class="col d-flex justify-content-end  mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(SC) Sale de Consulta</a>
+                    </div>
+                    <div class="col d-flex mt-3">
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(TP) Turno Prioritario</a>
+                    </div>
+                </div>
+
+                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+        </div>
+    </div>
+</div>
