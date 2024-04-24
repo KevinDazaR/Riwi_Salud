@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Menù - Citas mèdicas";
+    ViewData["Title"] = "Turno";
 }
 
 <style>
@@ -14,6 +14,11 @@
         background-color: rgba(227, 227, 227, 0.215);
         padding: 10px;
         border: 1px solid black;
+    }
+
+    .contenedor{
+        width: 100%;
+        height: 100%;
     }
 
     .top-container{
@@ -85,17 +90,21 @@
     }
 
     .container-contain {
-        width: 100%;
+        width: 50%;
+        margin: auto;
         @* background-color: rgb(200, 255, 3); *@
-        height: 300px;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     h3{
         color: rgb(156, 189, 37);
     }
 
-    .container-opciones{
-        height: 100%;
+    .container-turno{
+        height: 80%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -125,12 +134,17 @@
         padding: 10px;
     }
 
-    .btn-regresar:hover{
+    @* .btn-regresar:hover{
         width: 100px !important;
         background-color: blue !important;
         color: white !important;
         text-decoration: underline !important;
 
+    } *@
+
+    .font-italic{
+        font-style: italic;
+        font-size: 12px;
     }
 
 </style>
@@ -142,6 +156,8 @@
                 <a asp-controller="Home" asp-action="Index">Ingreso</a>
                 <span>></span>
                 <a asp-controller="Usuarios" asp-action="Menu">Menù</a>
+                <span>></span>
+                <a asp-controller="Usuarios" asp-action="Turno">Turno</a>
             </nav>
         </div>
         <div class="top-mid">
@@ -158,45 +174,22 @@
     </div>
 
     <div class="container-contain mt-4">
-        <div class="col container-opciones text-center">
-        <h3 class="text-center mt-3">Selecione una opciòn</h3>
-                <div class="row">
-                    <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCI) Confirmaciòn de Cita</a>
-                    </div>
 
-                    <div class="col d-flex  mt-3">
-                        <a class="border border-primary"asp-controller="Usuarios" asp-action="">(MCG) Consulta Mèdico General</a>
-                    </div>
+        <div class="col container-turno text-center">
+            <div class="card" style="width: 18rem;">
 
-                    <div class="w-100"></div>
-
-                    <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCP) Consulta de Psiquiatrìa</a>
-                    </div>
-                    <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCO) Consulta de Ortopedìa</a>
-                    </div>
-                  
-                    <div class="w-100"></div>
-
-                    <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCD) Crecimiento y Desarrollo</a>
-                    </div>
-                    <div class="col d-flex mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCC) Consulta de Cardiologìa </a>
-                    </div>
-                    <div class="w-100"></div>
-                    
-                    <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MCN) Consulta de Neurologìa </a>
-                    </div>
-                    <div class="col d-flex mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(MNE) Consulta de Neumologìa </a>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">Tu turno es:</h5>
+                    <p class="card-text"><b>(MCC)</b> - 013</p>
+                    <p class="card-text"> <b>Usuario:</b>Pepito Pèrez Jimenez</p>
+                    <p class="card-text"> <b>Documento:</b> </p>CC - 100305123</p>
+                    <p class="card-text"> <b>Fecha:</b> 24/04/2024 12:33:56 p.m</p>
                 </div>
+            </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+            <p class="font-italic mt-1">Por favor tome su turno acá abajo y espere a ser llamado</p>
+
+            <a class="btn-regresar btn btn-warning text-center" asp-controller="Home" asp-action="Index"> Aceptar</a>
         </div>
     </div>
 </div>
