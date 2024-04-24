@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Fli Ortega García\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+    "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj": {}
+  },
+  "projects": {
+    "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj",
+        "projectName": "RiwiSalud",
+        "projectPath": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/RiwiSalud.csproj",
+        "packagesPath": "/Users/kevindazar/.nuget/packages/",
+        "outputPath": "/Users/kevindazar/Documents/Coding/Riwi_Salud/RiwiSalud/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/kevindazar/.nuget/NuGet/NuGet.Config"
+>>>>>>> 90c12d3e6cad044c5abd994d0611b225f25684a5
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -42,6 +59,19 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+<<<<<<< HEAD
+=======
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+>>>>>>> 90c12d3e6cad044c5abd994d0611b225f25684a5
           "imports": [
             "net461",
             "net462",
@@ -61,7 +91,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 90c12d3e6cad044c5abd994d0611b225f25684a5
         }
       }
     }
