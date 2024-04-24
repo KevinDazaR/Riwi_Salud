@@ -1,4 +1,7 @@
 ﻿<values>
+<<<<<<< HEAD
+  <value name="StillAlive" type="qword">133584695173006560</value>
+=======
   <value name="vscodeversion" type="string">1.82.2</value>
   <value name="extname" type="string">ms-dotnettools.csdevkit</value>
   <value name="VSExeVersion" type="string">7.0.24.16804</value>
@@ -10,4 +13,5 @@
   <value name="CTime" type="qword">133584635167266785</value>
   <value name="VSIs64BitProcess" type="string">True</value>
   <value name="ExeName" type="string">rzls</value>
+>>>>>>> 8d7715bf16deb649c1a6bc10b2cd297723788e7f
 </values>
