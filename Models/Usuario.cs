@@ -10,7 +10,7 @@ namespace RiwiSalud.Models
         public string ? Celular {get; set;}
         public string ? Correo {get; set;}
         public DateOnly ? AñoNacimiento {get; set;}
-        public bool ? Estado {get; set;}
+        public string ? Estado {get; set;}
         
     }
 }
