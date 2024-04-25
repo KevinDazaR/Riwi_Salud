@@ -1,19 +1,20 @@
+@model Asesor
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Registro";
 }
 
 <style>
-    .container{
+    .container {
         width: 90%;
         min-width: 85%;
         height: 60vh;
-        margin:auto;
+        margin: auto;
         background-color: rgba(227, 227, 227, 0.215);
         padding: 10px;
         border: 1px solid black;
     }
 
-    .contenedor{
+    .contenedor {
         width: 100%;
         height: 100%;
         display: flex;
@@ -23,7 +24,7 @@
         justify-content: center;
     }
 
-    .contenedor .row{
+    .contenedor .row {
         width: 70%;
         height: 50%;
         display: flex;
@@ -32,65 +33,68 @@
         flex-direction: column;
     }
 
-    .top-container{
+    .top-container {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         border-bottom: 1px solid black;
     }
-    
-    .top-left{
+
+    .top-left {
         width: auto;
     }
 
-    .top-left nav{
+    .top-left nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .top-left nav a, .top-left nav span{
+    .top-left nav a,
+    .top-left nav span {
         margin-right: 5px;
     }
 
-    .top-mid{
+    .top-mid {
         width: auto;
     }
 
-    .user-box{
+    .user-box {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         align-content: center;
     }
-    .user-box i{
+
+    .user-box i {
         font-size: 12px;
-        color:blue;
+        color: blue;
         border: 1px solid blue;
         padding: 4px;
         border-radius: 50%;
         margin-right: 5px;
     }
 
-    .top-right{
+    .top-right {
         width: auto;
     }
-    .top-right i{
+
+    .top-right i {
         font-size: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
-        color:red;
+        color: red;
         border: 1px solid red;
         padding: 5px;
         border-radius: 50%;
     }
 
-    .top-right i:hover{
+    .top-right i:hover {
         font-size: 12px;
-        color:black;
+        color: black;
         background-color: red;
         border: 1px solid red;
         cursor: pointer;
@@ -102,15 +106,14 @@
 
     .container-contain {
         width: 100%;
-        @* background-color: rgb(200, 255, 3); *@
-        height: 300px;
+        @*background-color:rgb(200,255,3);*@height: 300px;
     }
 
-    h3{
+    h3 {
         color: rgb(156, 189, 37);
     }
 
-    .container-opciones{
+    .container-opciones {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -119,7 +122,7 @@
 
     }
 
-    .col a{
+    .col a {
         width: 100px;
         height: 40px;
         display: flex;
@@ -128,43 +131,60 @@
         text-decoration: none;
     }
 
-    .col a:hover{
+    .col a:hover {
         background-color: blue;
         color: white;
     }
 
-    .btn-regresar{
+    .btn-regresar {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
 </style>
 
 <div class="contenedor">
     <div class="row">
         <div class="col">
-        <h2 class="text-primary text-center mb-3">Bienvenido a <b>Riwi Salud</b></h2>
-            <form asp-controller="Usuarios" asp-action="Index" method="post">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Seleccione el tipo de docuento</label>
-                    <select class="form-control" name="TipoDocumento" id="exampleFormControlSelect1">
-                        <option disabled selected> Tipo de Documento</option>
-                        <option value="Cedula">CC - Cèdula de Ciudadanìa</option>
-                        <option value="Targeta de Identidad">TI - Tarjeta de Identidad</option>
-                        <option value="Registro Civil">RC - Registro Civil de Nacimiento</option>
-                        <option value="Pasaporte">PS - Pasaporte</option>
-                    </select>
-                
+            <h2 class="text-primary text-center mb-3">Registrate en <b>Riwi Salud</b></h2>
+            <form asp-controller="Asesores" asp-action="Registro" method="post">
+
                 <div class="form-group mt-3">
-                    <label for="exampleFormControlTextarea1">Ingrese su nùmero de documento</label>
-                    <input class="form-control" asp-form="NumeroDocumento" placeholder="Ejemplo: 100393213">
+                    <label asp-for="Nombres">Ingrese su Nombre:</label>
+                    <input asp-for="Nombres" class="form-control" type="text" placeholder="Ejemplo: Carlos">
+                    <span asp-validation-for="Nombres" class="text-danger"></span>
                 </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Apellidos">Ingrese su Apellido:</label>
+                    <input asp-for="Apellidos" class="form-control" type="text" placeholder="Ejemplo: Ruiz">
+                    <span asp-validation-for="Apellidos" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Correo">Ingrese su Correo:</label>
+                    <input asp-for="Correo" class="form-control" type="email"
+                        placeholder="Ejemplo: Carlos.121@gmail.com">
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Contraseña">Ingrese su Contraseña:</label>
+                    <input asp-for="Contraseña" class="form-control" type="password" placeholder="**********">
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Modulo">Ingrese su Modulo:</label>
+                    <input asp-for="Modulo" class="form-control" type="text" placeholder="Ejemplo: MCE023">
+                    <span asp-validation-for="Modulo" class="text-danger"></span>
+                </div>
+
                 <div class="form-group d-flex justify-content-center mt-3">
-                    <button type="sumbit" class="btn btn-primary">Ingresar</button>
+                    <button asp-form="Asesores" asp-action="Registro" class="btn btn-primary">Registrarse</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-

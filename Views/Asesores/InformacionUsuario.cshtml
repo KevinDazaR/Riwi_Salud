@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "Inicio Asesores";
+}
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 bg-light" style="padding: 30px;">
+                <h2 class="text-primary">Riwi Salud</h2>
+                <hr>
+                <div class="d-flex gap-2 justify-content-center">
+                    <i class="mt-1 fas fa-circle-user"></i>
+                    <p>Sandra Fernandez Perez - Asesora</p>
+                </div>
+                <div class="text-center">
+                    <p>Historial de atenciones</p>
+                </div>
+                <table class="table table-bordered border-info">
+                    <thead class="table table-dark">
+                        <tr>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tiempo</th>
+                            <th scope="col">Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1234567721</th>
+                            <td>Pepito Perez</td>
+                            <td>10:00</td>
+                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                        </tr>
+                        <tr>
+                            <th>1234567721</th>
+                            <td>Pepito Perez</td>
+                            <td>10:00</td>
+                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                        </tr>
+                        <tr>
+                            <th>1234567721</th>
+                            <td>Pepito Perez</td>
+                            <td>10:00</td>
+                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <button class="btn btn-success mt-3">Siguiente Turno</button>
+                    <div class="text-end mt-4">
+                        <p>@DateTime.Now</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-light" style="padding: 30px;">
+                <nav class="navbar navbar-expand-lg bg-body bg-dark">
+                    <div class="container">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav gap-3">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" aria-current="page" href="#">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="#">Historial</a>
+                                </li>
+                                <li class="nav-item me-5">
+                                    <a class="nav-link text-light" href="#">Consultar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container mt-5 text-center">
+                    <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
+                    <p>Carlos Perez</p>
+                    <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
+                    <p>1234567821</p>
+                    <h4><strong class="text-danger">Servicio:</strong></h4>
+                    <p>Pago de Factura</p>
+                    <button class="btn btn-warning mt-3">Finalizar Turno</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
