@@ -44,19 +44,19 @@ namespace RiwiSalud.Controllers
                 Response.Cookies.Append("Id", usuario.Id.ToString());
                 Response.Cookies.Append("Nombre", usuario.Nombres);
                 Response.Cookies.Append("Documento", usuario.NumeroDocumento);
-
+                
+                /* Apartado para listar las cockies */
                 var claims = new List<Claim>{
                     new Claim(ClaimTypes.Name, usuario.Nombres),
                     new Claim("Documento", usuario.NumeroDocumento)
                 };
-
-                
 
                 /* Guardian */
 
                 var claimsIndentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIndentity));
+
                 return RedirectToAction("Menu", "Usuarios");
             }
             else
@@ -66,26 +66,7 @@ namespace RiwiSalud.Controllers
             }
         }
 
-
-        
-
         /* Opcion para cerrar sesion  */
-
-        /* Apartado para obtener datos a cookies 
-                Response.Cookies.Append("Id", usuario.Id.ToString());
-                Response.Cookies.Append("Nombre", usuario.Nombres);
-                Response.Cookies.Append("Documento", usuario.NumeroDocumento);
-
-                var claims = new List<Claim>{
-                    new Claim(ClaimTypes.Name, usuario.Nombres),
-                    new Claim("Documento", usuario.NumeroDocumento),
-                };
-
-                /* Guardian 
-
-                var claimsIndentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIndentity));*/
  
         public async Task<IActionResult> Salir()
         {
@@ -96,6 +77,8 @@ namespace RiwiSalud.Controllers
         /* [Authorization]  */
         public async Task<IActionResult> Menu()
         {
+            /* Definiendo las Cookies como variables */
+
             var CookieNombre = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombre = CookieNombre;
 
