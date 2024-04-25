@@ -38,7 +38,17 @@ namespace RiwiSalud.Controllers
 
             _context.Asesores.Add(asesor);
             await _context.SaveChangesAsync();
-            return RedirectToAction("");
+            return RedirectToAction("Inicio");
+        }
+
+          public IActionResult Inicio()
+        {
+            return View();
+        }
+
+        public IActionResult InformacionUsuario()
+        {
+            return View();
         }
 
 
