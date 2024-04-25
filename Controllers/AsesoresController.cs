@@ -6,6 +6,10 @@ using Microsoft.Extensions.ObjectPool;
 using RiwiSalud.Data;
 using RiwiSalud.Models;
 using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace RiwiSalud.Controllers
 {
@@ -25,6 +29,41 @@ namespace RiwiSalud.Controllers
         {
             return View();
         }
+         [HttpPost]
+    public async Task<IActionResult> Index(string Correo, string Contraseña)
+    {
+        // Verificar si existe un asesor con el correo y contraseña dados.
+        var asesor = await _context.Asesores.FirstOrDefaultAsync(a => a.Correo == Correo && a.Contraseña == Contraseña);
+
+        if (asesor != null)
+        {
+            // Guardar datos en cookies.
+            Response.Cookies.Append("Id", asesor.Id.ToString());
+            Response.Cookies.Append("Nombres", asesor.Nombres);
+            Response.Cookies.Append("Correo", asesor.Correo);
+
+            // Crear lista de claims.
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, asesor.Nombres),
+                new Claim("Correo", asesor.Correo),
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+            // Redirigir a la página de inicio de asesores.
+            return RedirectToAction("Inicio", "Asesores");
+        }
+        else
+        {
+            // Si no se encuentra el asesor, redirigir a la página de error o mostrar un mensaje.
+            TempData["ErrorMessage"] = "Correo o contraseña incorrectos.";
+            return RedirectToAction("Index", "Asesores");
+        }
+    }
+
 
         public IActionResult Inicio()
         {

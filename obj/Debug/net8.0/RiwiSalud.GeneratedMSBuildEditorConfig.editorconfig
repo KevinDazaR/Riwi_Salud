@@ -9,87 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RiwiSalud
 build_property.RootNamespace = RiwiSalud
-build_property.ProjectDir = /home/riwip5-048/snap/Leo/Riwi_Salud/
+build_property.ProjectDir = C:\Users\yeifr\OneDrive\Documentos\leo\Riwi_Salud\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/riwip5-048/snap/Leo/Riwi_Salud
+build_property.MSBuildProjectDirectory = C:\Users\yeifr\OneDrive\Documentos\leo\Riwi_Salud
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Asesores/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXNlc29yZXMvSW5kZXguY3NodG1s
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Asesores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNlc29yZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Asesores/InformacionUsuario.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXNlc29yZXMvSW5mb3JtYWNpb25Vc3VhcmlvLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Asesores/InformacionUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNlc29yZXNcSW5mb3JtYWNpb25Vc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Asesores/Inicio.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXNlc29yZXMvSW5pY2lvLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Asesores/Inicio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNlc29yZXNcSW5pY2lvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Asesores/Registro.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXNlc29yZXMvUmVnaXN0cm8uY3NodG1s
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Asesores/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNlc29yZXNcUmVnaXN0cm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Turnos/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHVybm9zL0luZGV4LmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Turnos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHVybm9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Turnos/Pantalla.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHVybm9zL1BhbnRhbGxhLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Turnos/Pantalla.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHVybm9zXFBhbnRhbGxhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvSW5kZXguY3NodG1s
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/Menu.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudS5jc2h0bWw=
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTWVudS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/MenuCitasMedicas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudUNpdGFzTWVkaWNhcy5jc2h0bWw=
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/MenuCitasMedicas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTWVudUNpdGFzTWVkaWNhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/MenuMedicamentos.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudU1lZGljYW1lbnRvcy5jc2h0bWw=
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/MenuMedicamentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTWVudU1lZGljYW1lbnRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/MenuPagos.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvTWVudVBhZ29zLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/MenuPagos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTWVudVBhZ29zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Usuarios/Turno.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXN1YXJpb3MvVHVybm8uY3NodG1s
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Usuarios/Turno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcVHVybm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/riwip5-048/snap/Leo/Riwi_Salud/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-rsm1ao7otb
+[C:/Users/yeifr/OneDrive/Documentos/leo/Riwi_Salud/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5iafs2e0ud
