@@ -35,9 +35,9 @@ namespace RiwiSalud.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string TipoDocumento, string NumeroDocumento)
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.TipoDocumento == TipoDocumento && u.NumeroDocumento == NumeroDocumento);
-            
-            if (usuario != null)
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
+
+            if (usuario != null )
             {
                 /* Apartado para obtener datos a cookies */
 
