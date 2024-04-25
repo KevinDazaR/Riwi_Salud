@@ -15,7 +15,7 @@
                 <hr>
                 <div class="d-flex gap-2 justify-content-center">
                     <i class="mt-1 fas fa-circle-user"></i>
-                     <p> @ViewBag.CookieNombre @ViewBag.CookieApellido - Asesor</p>
+                    <p> @ViewBag.CookieNombre @ViewBag.CookieApellido - Asesor</p>
                 </div>
                 <div class="text-center">
                     <p>Historial de atenciones</p>
@@ -53,7 +53,8 @@
                 <div class="text-center">
                     <button class="btn btn-success mt-3">Siguiente Turno</button>
                     <div class="text-end mt-4">
-                        <p>@DateTime.Now</p>
+                        <!-- El ID es importante para poder referenciar este elemento en JavaScript -->
+                        <p id="current-time"></p>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,8 @@
                                     <a class="nav-link text-light" href="#">Consultar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar Sesión</a>
+                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar
+                                        Sesión</a>
                                 </li>
                             </ul>
                         </div>
@@ -80,13 +82,17 @@
                 </nav>
                 <div class="container mt-5 text-center">
                     <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
-                    <p>Carlos Perez</p>
+                    <p>@ViewBag.Nombre</p>
                     <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
-                    <p>1234567821</p>
+                    <p>@ViewBag.Documento</p>
                     <h4><strong class="text-danger">Servicio:</strong></h4>
                     <p>Pago de Factura</p>
-                    <button class="btn btn-warning mt-3">Finalizar Turno</button>
+                    <form asp-action="FinalizarTurno" asp-controller="Asesores" method="post">
+                        <button type="submit" class="btn btn-warning mt-3">Finalizar Turno</button>
+                    </form>
                 </div>
+
+
             </div>
         </div>
     </div>
