@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Inicio Asesores";
+
 }
 
 <head>
@@ -15,7 +16,7 @@
                 <hr>
                 <div class="d-flex gap-2 justify-content-center">
                     <i class="mt-1 fas fa-circle-user"></i>
-                    <p>Sandra Fernandez Perez - Asesora</p>
+                    <p> @ViewBag.CookieNombre @ViewBag.CookieApellido - Asesor</p>
                 </div>
                 <div class="text-center">
                     <p>Historial de atenciones</p>
@@ -75,7 +76,7 @@
                                     <a class="nav-link text-light" href="#">Consultar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar Sesión</a>
+                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Salir">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </div>

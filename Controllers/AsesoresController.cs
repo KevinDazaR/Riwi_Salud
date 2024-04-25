@@ -39,13 +39,15 @@ namespace RiwiSalud.Controllers
         {
             // Guardar datos en cookies.
             Response.Cookies.Append("Id", asesor.Id.ToString());
-            Response.Cookies.Append("Nombres", asesor.Nombres);
+            Response.Cookies.Append("Nombre", asesor.Nombres);
+            Response.Cookies.Append("Apellido", asesor.Apellidos);
             Response.Cookies.Append("Correo", asesor.Correo);
 
             // Crear lista de claims.
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, asesor.Nombres),
+                new Claim("Apellido", asesor.Apellidos),
                 new Claim("Correo", asesor.Correo),
             };
 
@@ -67,7 +69,18 @@ namespace RiwiSalud.Controllers
 
         public IActionResult Inicio()
         {
+           var CookieNombre = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombre = CookieNombre;
+            var CookieApellido = HttpContext.Request.Cookies["Apellido"];
+            ViewBag.CookieApellido = CookieApellido;
+
             return View();
+        }
+         public async Task<IActionResult> Salir()
+        {
+          await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+          
+            return RedirectToAction("Index", "Asesores");
         }
 
         public async Task<IActionResult> Registro()
@@ -75,18 +88,50 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registro(Asesor asesor)
-        {
+      [HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Registro(Asesor asesor)
+{
+    if (ModelState.IsValid)
+    {
+        // Here you should hash and salt the password before saving it
+        // For example:
+        // asesor.Contraseña = HashAndSaltPassword(asesor.Contraseña);
 
-            _context.Asesores.Add(asesor);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Inicio");
-        }
+        _context.Asesores.Add(asesor);
+        await _context.SaveChangesAsync();
+
+        // Guardar datos en cookies.
+        Response.Cookies.Append("Id", asesor.Id.ToString());
+        Response.Cookies.Append("Nombre", asesor.Nombres);
+        Response.Cookies.Append("Correo", asesor.Correo);
+
+        // Crear lista de claims.
+        var claims = new List<Claim>
+         {
+            new Claim(ClaimTypes.Name, asesor.Nombres),
+            new Claim("Correo", asesor.Correo),
+        };
+
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+        // Redirigir a la página de inicio de asesores.
+        return RedirectToAction("Inicio", "Asesores");
+    }
+
+    return View(asesor);
+}
+
 
         public IActionResult InformacionUsuario()
         {
+            var CookieNombre = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombre = CookieNombre;
+            var CookieApellido = HttpContext.Request.Cookies["Apellido"];
+            ViewBag.CookieApellido = CookieApellido;
+
             return View();
         }
 
