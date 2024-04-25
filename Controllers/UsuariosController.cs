@@ -141,7 +141,7 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
-        public async Task<IActionResult> Turno()
+        public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombres"];
             ViewBag.CookieNombres = CookieNombres;
@@ -154,6 +154,9 @@ namespace RiwiSalud.Controllers
             
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+
+
 
             return View();
         }
