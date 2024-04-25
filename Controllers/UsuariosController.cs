@@ -141,6 +141,24 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> MenuInformacion()
+        {
+            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            return View();
+        }
+
         public async Task<IActionResult> Turno()
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombres"];
