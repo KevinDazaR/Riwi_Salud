@@ -10,6 +10,7 @@ namespace RiwiSalud.Models
        [ForeignKey("IdUsuario")] 
         public string ? IdUsuario {get; set;}
         public string ? IdUsuarioNoRegistrado {get; set;}
+        public string ? N_Turno {get; set;}
 
         
     }
