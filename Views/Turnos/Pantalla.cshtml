@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Pantalla de Espera";
 }
-
+<html></html>
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -10,82 +10,67 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 bg-light" style="padding: 30px;">
-                <h2 class="text-primary">Riwi Salud</h2>
-                <hr>
-                <div class="d-flex gap-2 justify-content-center">
-                    <i class="mt-1 fas fa-circle-user"></i>
-                    <p>Sandra Fernandez Perez - Asesora</p>
-                </div>
-                <div class="text-center">
-                    <p>Historial de atenciones</p>
-                </div>
-                <table class="table table-bordered border-info">
+            <div class="col-md-4 bg-light" style="padding: 30px; border: solid 1px;">
+                <table class="table table-bordered border-dark text-center">
                     <thead class="table table-dark">
                         <tr>
-                            <th scope="col">Cédula</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Tiempo</th>
-                            <th scope="col">Detalles</th>
+                            <td>Turno</td>
+                            <td>Módulo</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1234567721</th>
-                            <td>Pepito Perez</td>
-                            <td>10:00</td>
-                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                        <tr class="bg-info">
+                            <td>(MCE-023)</td>
+                            <td>7</td>
                         </tr>
                         <tr>
-                            <th>1234567721</th>
-                            <td>Pepito Perez</td>
-                            <td>10:00</td>
-                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                            <td>(DCE-022)</td>
+                            <td>2</td>
                         </tr>
                         <tr>
-                            <th>1234567721</th>
-                            <td>Pepito Perez</td>
-                            <td>10:00</td>
-                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
+                            <td>(DOE-012)</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>(MCE-021)</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>(DCE-020)</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>(DOE-011)</td>
+                            <td>7</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="text-center">
-                    <button class="btn btn-success mt-3">Siguiente Turno</button>
-                    <div class="text-end mt-4">
-                        <p>@DateTime.Now</p>
+            </div>
+            <div class="col-md-8 bg-light" style="padding: 30px; border: solid 1px ;">
+                <div class="navbar navbar-expand-lg border border-dark justify-content-center">
+                    <div class="container d-flex">
+                        <h3 class="text-primary">Riwi Salud</h3>
+                        <p>Hoy es @DateTime.Now</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 bg-light" style="padding: 30px;">
-                <nav class="navbar navbar-expand-lg bg-body bg-dark">
-                    <div class="container">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav gap-3">
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" aria-current="page" href="#">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="#">Historial</a>
-                                </li>
-                                <li class="nav-item me-5">
-                                    <a class="nav-link text-light" href="#">Consultar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar Sesión</a>
-                                </li>
-                            </ul>
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <img class="img-fluid" src="https://media.istockphoto.com/id/1456795358/es/vector/hombre-lavarse-las-manos-banner-de-procedimiento-de-higiene-con-personaje-masculino-lavar.jpg?s=612x612&w=0&k=20&c=QkVoLbCCHUFC8hCYfYToavO2VJ_qFuQOFdRCinpgQSQ=" alt="">
+                    </div>
+                    <div class="col-md-6 mt-3 text-center">
+                        <h4 class="text-primary">Titulo</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe provident minima aliquid excepturi quis obcaecati deserunt nobis recusandae corporis quaerat veritatis, ducimus natus omnis? Asperiores hic architecto similique repudiandae repellendus?</p>
+                        <div class="text-start">
+                            <h5 class="text-primary">Tiempo de espera</h5>
+                            <p>262 segundos</p>
                         </div>
                     </div>
-                </nav>
-                <div class="container mt-5 text-center">
-                    <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
-                    <p>Carlos Perez</p>
-                    <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
-                    <p>1234567821</p>
-                    <h4><strong class="text-danger">Servicio:</strong></h4>
-                    <p>Pago de Factura</p>
-                    <button class="btn btn-warning mt-3">Finalizar Turno</button>
+                    <div class="text-center">
+                        <p class="mt-3">Recuerda lavar tus manos con agua y jabón antes y despues de cada consulta.</p>
+                        <div class="bg-danger" style="padding: 1px;">
+                            <p><strong class="text-primary">GUÍA DE TURNOS: </strong>Los turnos tienen 3 letras, cada una de ellas significa la opción que elegiste.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
