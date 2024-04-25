@@ -31,18 +31,24 @@ namespace RiwiSalud.Controllers
 
 
         public IActionResult Inicio()
+
+        public IActionResult Index()
         {
                 return View();
         }
         public async Task<IActionResult> Registro()
+
+        public IActionResult Inicio()
         {
             return View();
         }
 
         public IActionResult InformacionUsuario()
+        public async Task<IActionResult> Registro()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registro(Asesor asesor)
@@ -50,9 +56,13 @@ namespace RiwiSalud.Controllers
 
             _context.Asesores.Add(asesor);
             await _context.SaveChangesAsync();
-            return RedirectToAction("");
+            return RedirectToAction("Inicio");
         }
 
+        public IActionResult InformacionUsuario()
+        {
+            return View();
+        }
 
     }
 }
