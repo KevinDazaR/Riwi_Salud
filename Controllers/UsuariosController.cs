@@ -33,15 +33,21 @@ namespace RiwiSalud.Controllers
 
         /* login ingreso al sistema */
         [HttpPost]
-        public async Task<IActionResult> Index(string NumeroDocumento)
+        public async Task<IActionResult> Index(string TipoDocumento, string NumeroDocumento)
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
-
-            if (usuario != null && NumeroDocumento == usuario.NumeroDocumento)
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.TipoDocumento == TipoDocumento && u.NumeroDocumento == NumeroDocumento);
+            
+            if (usuario != null)
             {
                 /* Apartado para obtener datos a cookies */
+                Response.Cookies.Append("TipoDocumento", usuario.TipoDocumento);
+
+                var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+                ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
                 Response.Cookies.Append("Id", usuario.Id.ToString());
-                Response.Cookies.Append("Nombre", usuario.Nombres);
+                Response.Cookies.Append("Nombres", usuario.Nombres);
+                Response.Cookies.Append("Apellidos", usuario.Apellidos);
                 Response.Cookies.Append("Documento", usuario.NumeroDocumento);
 
                 var claims = new List<Claim>{
@@ -58,17 +64,9 @@ namespace RiwiSalud.Controllers
                 return RedirectToAction("Menu", "Usuarios");
             }
             else
-            {
-
-                return RedirectToAction("Turno", "Usuarios");
-
-/*                 public IActionResult Create(UsuarioNoRegistrado u){
-                _context.Add(u);
-                _context.SaveChanges();
-                return  RedirectToAction("Index"); */
+            {   
+                return RedirectToAction("Index", "Usuarios");
             };
-
-
         }
 
         /* Opcion para cerrar sesion */
@@ -81,6 +79,14 @@ namespace RiwiSalud.Controllers
 
         public async Task<IActionResult> Menu()
         {
+            /* Definiendo las Cookies como variables */
+
+            var CookieNombre = HttpContext.Request.Cookies["Nombres"];
+            ViewBag.CookieNombre = CookieNombre;
+
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+
             return View();
         }
 

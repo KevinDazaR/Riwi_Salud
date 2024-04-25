@@ -2,6 +2,8 @@
     ViewData["Title"] = "Inicio";
 }
 
+@model Usuario
+
 <style>
     .container{
         width: 90%;
@@ -145,23 +147,24 @@
     <div class="row">
         <div class="col">
         <h2 class="text-primary text-center mb-3">Bienvenido a <b>Riwi Salud</b></h2>
+        
             <form asp-controller="Usuarios" asp-action="Index" method="post">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Seleccione el tipo de docuento</label>
-                    <select class="form-control" name="TipoDocumento" id="exampleFormControlSelect1">
-                        <option disabled selected> Tipo de Documento</option>
-                        <option value="Cedula">CC - Cèdula de Ciudadanìa</option>
-                        <option value="Targeta de Identidad">TI - Tarjeta de Identidad</option>
-                        <option value="Registro Civil">RC - Registro Civil de Nacimiento</option>
-                        <option value="Pasaporte">PS - Pasaporte</option>
+                    <label for="TipoDocumento">Seleccione el tipo de documento</label>
+                    <select class="form-control" asp-for="TipoDocumento">
+                        <option value="" disabled selected> Tipo de Documento</option>
+                        <option value="CC">CC - Cèdula de Ciudadanìa</option>
+                        <option value="TI">TI - Tarjeta de Identidad</option>
+                        <option value="RC">RC - Registro Civil de Nacimiento</option>
+                        <option value="PS">PSP - Pasaporte</option>
                     </select>
                 
                 <div class="form-group mt-3">
-                    <label for="exampleFormControlTextarea1">Ingrese su nùmero de documento</label>
-                    <input class="form-control" asp-form="NumeroDocumento" placeholder="Ejemplo: 100393213">
+                    <label for="NumeroDocumento">Ingrese su nùmero de documento</label>
+                    <input class="form-control" asp-for="NumeroDocumento" placeholder="Ejemplo: 100393213">
                 </div>
                 <div class="form-group d-flex justify-content-center mt-3">
-                    <button type="sumbit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
                 </div>
             </form>
         </div>
