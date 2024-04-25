@@ -15,6 +15,10 @@
         padding: 10px;
         border: 1px solid black;
     }
+    
+    .top-right a{
+        text-decoration: none;
+    }
 
     .top-container{
         width: 100%;
@@ -147,13 +151,18 @@
         <div class="top-mid">
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
-                <p>CC: </p>
-                <p> 10041235 - </p>
-                <p>Pepito Pèrez Jimenez</p>
+                <p>@ViewBag.CookieTipoDocumento : </p>
+                <p> @ViewBag.CookieDocumento - </p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieNombres</p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieApellidos</p>
             </div>
         </div>
         <div class="top-right">
-            <i class="fa-solid fa-x"></i>
+               <a asp-controller="Usuarios" asp-action="Salir">
+                 <i class="fa-solid fa-x"></i>
+            </a>
         </div>
     </div>
 
@@ -179,7 +188,7 @@
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action="Menu"> < Regresar</a>
         </div>
     </div>
 </div>

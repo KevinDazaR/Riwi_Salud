@@ -58,9 +58,15 @@
         margin-right: 5px;
     }
 
+
     .top-right{
         width: auto;
     }
+
+    .top-right a{
+        text-decoration: none;
+    }
+
     .top-right i{
         font-size: 10px;
         display: flex;
@@ -147,13 +153,18 @@
         <div class="top-mid">
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
-                <p>CC: </p>
-                <p> 10041235 - </p>
-                <p>Pepito Pèrez Jimenez</p>
+                <p>@ViewBag.CookieTipoDocumento : </p>
+                <p> @ViewBag.CookieDocumento - </p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieNombres</p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieApellidos</p>
             </div>
         </div>
         <div class="top-right">
-            <i class="fa-solid fa-x"></i>
+             <a asp-controller="Usuarios" asp-action="Salir">
+                 <i class="fa-solid fa-x"></i>
+            </a>
         </div>
     </div>
 
@@ -162,41 +173,41 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" href="">(MCI) Confirmaciòn de Cita</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCI) Confirmaciòn de Cita</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary"href="">(MCG) Consulta Mèdico General</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCG) Consulta Mèdico General</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" href="">(MCP) Consulta de Psiquiatrìa</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCP) Consulta de Psiquiatrìa</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" href="">(MCO) Consulta de Ortopedìa</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCO) Consulta de Ortopedìa</a>
                     </div>
                   
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" href="">(MCD) Crecimiento y Desarrollo</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCD) Crecimiento y Desarrollo</a>
                     </div>
                     <div class="col d-flex mt-3">
-                        <a class="border border-primary" href="">(MCC) Consulta de Cardiologìa </a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCC) Consulta de Cardiologìa </a>
                     </div>
                     <div class="w-100"></div>
                     
                     <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" href="">(MCN) Consulta de Neurologìa </a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCN) Consulta de Neurologìa </a>
                     </div>
                     <div class="col d-flex mt-3">
-                        <a class="border border-primary" href="">(MNE) Consulta de Neumologìa </a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CNE) Consulta de Neumologìa </a>
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" href=""> < Regresar</a>
+                <a asp-controller="Usuarios" asp-action="Menu" class="btn-regresar text-center"> < Regresar</a>
         </div>
     </div>
 </div>

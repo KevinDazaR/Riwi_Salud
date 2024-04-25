@@ -63,6 +63,10 @@
         margin-right: 5px;
     }
 
+    .top-right a{
+        text-decoration: none;
+    }
+
     .top-right{
         width: auto;
     }
@@ -163,13 +167,18 @@
         <div class="top-mid">
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
-                <p>CC: </p>
-                <p> 10041235 - </p>
-                <p>Pepito Pèrez Jimenez</p>
+                <p>@ViewBag.CookieTipoDocumento : </p>
+                <p> @ViewBag.CookieDocumento - </p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieNombres</p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieApellidos</p>
             </div>
         </div>
         <div class="top-right">
-            <i class="fa-solid fa-x"></i>
+            <a asp-controller="Usuarios" asp-action="Salir">
+                 <i class="fa-solid fa-x"></i>
+            </a>
         </div>
     </div>
 
@@ -189,7 +198,7 @@
 
             <p class="font-italic mt-1">Por favor tome su turno acá abajo y espere a ser llamado</p>
 
-            <a class="btn-regresar btn btn-warning text-center" asp-controller="Usuarios" asp-action="Index"> Aceptar</a>
+            <a class="btn-regresar btn btn-warning text-center" asp-controller="Usuarios" asp-action="Salir"> Aceptar</a>
         </div>
     </div>
 </div>

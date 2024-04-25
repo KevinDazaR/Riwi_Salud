@@ -14,35 +14,24 @@ namespace RiwiSalud.Controllers
     {
         /* Conexion con la db */
         public readonly BaseContext _context;
-
-        /* Constructor Asesores */
-        public AsesoresController(BaseContext context)
-        {
+        /* Constructor Usuarios */
+        public AsesoresController(BaseContext context){
             _context = context;
-        }
-                public async Task<IActionResult> Index()
-        {
-            return View();
         }
         /* Constructor Usuarios */
 
         /* Actions para las vistas  */
 
-
-
-        public IActionResult Inicio()
+        public async Task<IActionResult> Index()
         {
-                return View();
+            return View();
         }
+
         public async Task<IActionResult> Registro()
         {
             return View();
         }
 
-        public IActionResult InformacionUsuario()
-        {
-            return View();
-        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registro(Asesor asesor)
@@ -50,7 +39,17 @@ namespace RiwiSalud.Controllers
 
             _context.Asesores.Add(asesor);
             await _context.SaveChangesAsync();
-            return RedirectToAction("");
+            return RedirectToAction("Inicio");
+        }
+
+          public IActionResult Inicio()
+        {
+            return View();
+        }
+
+        public IActionResult InformacionUsuario()
+        {
+            return View();
         }
 
 
