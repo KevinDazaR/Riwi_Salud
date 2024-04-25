@@ -51,7 +51,10 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    <button class="btn btn-success mt-3">Siguiente Turno</button>
+                    <div class="d-flex gap-5 text-center">
+                        <button class="btn btn-success">Crear Asesor</button>
+                        <button class="btn btn-success">Siguiente Turno</button>
+                    </div>
                     <div class="text-end mt-4">
                         <p>@DateTime.Now</p>
                     </div>
@@ -72,7 +75,7 @@
                                     <a class="nav-link text-light" href="#">Consultar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
+                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </div>
