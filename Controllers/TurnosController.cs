@@ -26,6 +26,11 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
+        public IActionResult Pantalla()
+        {
+            return View();
+        }
+
         // public async Task<IActionResult> Index(string search){
         //     //Coleccion de registros u objetos  
         //     var users = from user in _context.Users select user;

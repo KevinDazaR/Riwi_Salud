@@ -37,7 +37,7 @@ namespace RiwiSalud.Controllers
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
 
-            if (usuario != null && NumeroDocumento == usuario.NumeroDocumento)
+            if (usuario != null )
             {
                 /* Apartado para obtener datos a cookies */
                 Response.Cookies.Append("Id", usuario.Id.ToString());
