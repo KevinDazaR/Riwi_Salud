@@ -14,14 +14,19 @@ namespace RiwiSalud.Controllers
     {
         /* Conexion con la db */
         public readonly BaseContext _context;
-        /* Constructor Usuarios */
-        public AsesoresController(BaseContext context){
+
+        /* Constructor Asesores */
+        public AsesoresController(BaseContext context)
+        {
             _context = context;
         }
 
-        /* Actions para las vistas  */
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Inicio()
         {
             return View();
         }
@@ -41,16 +46,10 @@ namespace RiwiSalud.Controllers
             return RedirectToAction("Inicio");
         }
 
-          public IActionResult Inicio()
-        {
-            return View();
-        }
-
         public IActionResult InformacionUsuario()
         {
             return View();
         }
-
 
     }
 }
