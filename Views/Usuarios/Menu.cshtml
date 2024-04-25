@@ -61,6 +61,11 @@
     .top-right{
         width: auto;
     }
+
+    .top-right a{
+        text-decoration: none;
+    }
+
     .top-right i{
         font-size: 10px;
         display: flex;
@@ -147,13 +152,18 @@
         <div class="top-mid">
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
-                <p>CC: </p>
-                <p> 10041235 - </p>
-                <p>Pepito Pèrez Jimenez</p>
+                <p>@ViewBag.CookieTipoDocumento : </p>
+                <p> @ViewBag.CookieDocumento - </p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieNombres</p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieApellidos</p>
             </div>
         </div>
         <div class="top-right">
-            <i class="fa-solid fa-x"></i>
+            <a asp-controller="Usuarios" asp-action="Salir">
+                 <i class="fa-solid fa-x"></i>
+            </a>
         </div>
     </div>
 
@@ -175,20 +185,20 @@
                         <a class="border border-primary" asp-controller="Usuarios" asp-action="MenuPagoFacturas">(P) Pago de Facturas</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(I) Informaciòn General</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(I) Informaciòn General</a>
                     </div>
                   
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(SC) Sale de Consulta</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(SC) Sale de Consulta</a>
                     </div>
                     <div class="col d-flex mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="">(TP) Turno Prioritario</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(TP) Turno Prioritario</a>
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action="Salir"> < Regresar</a>
         </div>
     </div>
 </div>
