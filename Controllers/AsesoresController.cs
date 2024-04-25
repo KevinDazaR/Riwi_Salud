@@ -43,7 +43,7 @@ namespace RiwiSalud.Controllers
 
             _context.Asesores.Add(asesor);
             await _context.SaveChangesAsync();
-            return RedirectToAction("");
+            return RedirectToAction("Inicio");
         }
 
         public IActionResult InformacionUsuario()
