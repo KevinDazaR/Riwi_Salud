@@ -154,9 +154,10 @@ namespace RiwiSalud.Controllers
             
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
-
-
-
+            
+            Response.Cookies.Append("LetrasTurno", LetrasTurno);
+            var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
+            ViewBag.CookieLetrasTurno = CookieLetrasTurno;
 
             return View();
         }
