@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj": {}
+    "/home/riwip5-048/snap/Leo/Riwi_Salud/RiwiSalud.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj": {
+    "/home/riwip5-048/snap/Leo/Riwi_Salud/RiwiSalud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
+        "projectUniqueName": "/home/riwip5-048/snap/Leo/Riwi_Salud/RiwiSalud.csproj",
         "projectName": "RiwiSalud",
-        "projectPath": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\RiwiSalud.csproj",
-        "packagesPath": "C:\\Users\\Fli Ortega García\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fli Ortega García\\Desktop\\Riwi_Salud\\Riwi_Salud\\obj\\",
+        "projectPath": "/home/riwip5-048/snap/Leo/Riwi_Salud/RiwiSalud.csproj",
+        "packagesPath": "/home/riwip5-048/.nuget/packages/",
+        "outputPath": "/home/riwip5-048/snap/Leo/Riwi_Salud/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fli Ortega García\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/riwip5-048/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -71,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
