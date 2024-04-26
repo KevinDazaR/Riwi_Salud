@@ -15,6 +15,10 @@
         padding: 10px;
         border: 1px solid black;
     }
+    
+    .top-right a{
+        text-decoration: none;
+    }
 
     .top-container{
         width: 100%;
@@ -147,13 +151,18 @@
         <div class="top-mid">
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
-                <p>CC: </p>
-                <p> 10041235 - </p>
-                <p>Pepito Pèrez Jimenez</p>
+                <p>@ViewBag.CookieTipoDocumento : </p>
+                <p> @ViewBag.CookieDocumento - </p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieNombres</p>
+                <p>&nbsp;</p>
+                <p>@ViewBag.CookieApellidos</p>
             </div>
         </div>
         <div class="top-right">
-            <i class="fa-solid fa-x"></i>
+               <a asp-controller="Usuarios" asp-action="Salir">
+                 <i class="fa-solid fa-x"></i>
+            </a>
         </div>
     </div>
 
@@ -162,24 +171,24 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(MCM) Solicitar Medicamento</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="MCM" asp-action="Turno">(MCM) Solicitar Medicamento</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary"asp-controller="Usuarios" asp-action="Turno">(MAC) Autorizaciòn de Medicamentos</a>
+                        <a class="border border-primary"asp-controller="Usuarios" asp-route-LetrasTurno="MAC" asp-action="Turno">(MAC) Autorizaciòn de Medicamentos</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(MFM) Fòrmula mèdica</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="MFM" asp-action="Turno">(MFM) Fòrmula mèdica</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(MRF) Renovaciòn de Formula</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="MRF" asp-action="Turno">(MRF) Renovaciòn de Formula</a>
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action=""> < Regresar</a>
+                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action="Menu"> < Regresar</a>
         </div>
     </div>
 </div>
