@@ -32,13 +32,13 @@ namespace RiwiSalud.Controllers
             return View();
         }
     
-        /* login ingreso al sistema */
+
         [HttpPost]
-        public async Task<IActionResult> Index(string NumeroDocumento)
+        public async Task<IActionResult> Index(string NumeroDocumento, string TipoDocumento)
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
 
-            if (usuario != null)
+            if (usuario != null && TipoDocumento == usuario.TipoDocumento)
             {
                 /* Apartado para obtener datos a cookies  */
                 Response.Cookies.Append("Id", usuario.Id.ToString());
@@ -62,8 +62,21 @@ namespace RiwiSalud.Controllers
             }
             else
             {
+                var usuarioNoRegistrado = new UsuarioNoRegistrado
+                {
+                    TipoDocumento = TipoDocumento,
+                    NumeroDocumento = NumeroDocumento
+                };
 
-                return RedirectToAction("Turno", "Usuarios");
+                _context.UsuariosNoRegistrados.Add(usuarioNoRegistrado);
+                await _context.SaveChangesAsync();
+
+                Response.Cookies.Append("Id", usuarioNoRegistrado.Id.ToString());
+                Response.Cookies.Append("Nombre", "Invitado");
+                Response.Cookies.Append("Documento", usuarioNoRegistrado.NumeroDocumento);
+                Response.Cookies.Append("TipoDocumento", usuarioNoRegistrado.TipoDocumento);
+
+                return RedirectToAction("Menu", "Usuarios");
             }
         }
 
@@ -158,24 +171,35 @@ namespace RiwiSalud.Controllers
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
 
-            var f = new Turno{
+            if(CookieNombres == "Invitado")
+            {
+                var f = new Turno{
+                FechaTurno = DateTime.Now,
+                IdUsuarioNoRegistrado = Int32.Parse(CookieId),
+                };
+                
+                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
+                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
+                ViewBag.CookieFecha = CookieFecha;
+
+                _context.Turnos.Add(f);
+                await _context.SaveChangesAsync();
+            }
+            else{
+                var f = new Turno{
                 FechaTurno = DateTime.Now,
                 IdUsuario = Int32.Parse(CookieId),
-            };
+                };
+                
+                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
+                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
+                ViewBag.CookieFecha = CookieFecha;
 
-            Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
-            var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
-            ViewBag.CookieFecha = CookieFecha;
+                _context.Turnos.Add(f);
+                await _context.SaveChangesAsync();
+            }
 
-            _context.Turnos.Add(f);
-            await _context.SaveChangesAsync();
-
-            var fecha = _context.Turnos.AsQueryable();
-            fecha = fecha.Where(f => f.IdUsuario == int.Parse(CookieId));
-            ViewData["turnodata"] = fecha.ToList();
-            
             return View();
-            
         }
 
         // public async Task<IActionResult> Index(string search){
