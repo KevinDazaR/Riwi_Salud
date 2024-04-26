@@ -24,6 +24,7 @@ namespace RiwiSalud.Controllers
         {
             _context = context;
         }
+        /* Constructor Usuarios */
 
         public IActionResult Index()
         {
