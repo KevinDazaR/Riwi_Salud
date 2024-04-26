@@ -27,9 +27,14 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Pantalla()
+        public IActionResult Pantalla()
         {
-            return View(await _context.Turnos.ToListAsync());
+            var ultimosTurnos = _context.Turnos
+                                .OrderByDescending(t => t.N_Turno)
+                                .Take(5)
+                                .ToList();
+
+            return View(ultimosTurnos);
         }
 
         // public async Task<IActionResult> Index(string search){

@@ -32,13 +32,13 @@ namespace RiwiSalud.Controllers
             return View();
         }
     
-
+        /* login ingreso al sistema */
         [HttpPost]
-        public async Task<IActionResult> Index(string NumeroDocumento, string TipoDocumento)
+        public async Task<IActionResult> Index(string NumeroDocumento)
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
 
-            if (usuario != null && TipoDocumento == usuario.TipoDocumento)
+            if (usuario != null)
             {
                 /* Apartado para obtener datos a cookies  */
                 Response.Cookies.Append("Id", usuario.Id.ToString());
@@ -62,21 +62,8 @@ namespace RiwiSalud.Controllers
             }
             else
             {
-                var usuarioNoRegistrado = new UsuarioNoRegistrado
-                {
-                    TipoDocumento = TipoDocumento,
-                    NumeroDocumento = NumeroDocumento
-                };
 
-                _context.UsuariosNoRegistrados.Add(usuarioNoRegistrado);
-                await _context.SaveChangesAsync();
-
-                Response.Cookies.Append("Id", usuarioNoRegistrado.Id.ToString());
-                Response.Cookies.Append("Nombre", "Invitado");
-                Response.Cookies.Append("Documento", usuarioNoRegistrado.NumeroDocumento);
-                Response.Cookies.Append("TipoDocumento", usuarioNoRegistrado.TipoDocumento);
-
-                return RedirectToAction("Menu", "Usuarios");
+                return RedirectToAction("Turno", "Usuarios");
             }
         }
 
@@ -186,7 +173,7 @@ namespace RiwiSalud.Controllers
 
                 // K: Se crea una nueva instancia de la base de datos Turno y se establece y pasa el valor
 
-                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = Int32.Parse(CookieId)};
+                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = Int32.Parse(CookieId) };
                  
                 // Agregar el nuevo turno al contexto
                 _context.Turnos.Add(nuevoTurno);
@@ -202,33 +189,22 @@ namespace RiwiSalud.Controllers
             contadorNumeroTurno ++;
 
 
-            if(CookieNombres == "Invitado")
-            {
-                var f = new Turno{
-                FechaTurno = DateTime.Now,
-                IdUsuarioNoRegistrado = Int32.Parse(CookieId),
-                };
-                
-                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
-                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
-                ViewBag.CookieFecha = CookieFecha;
-
-                _context.Turnos.Add(f);
-                await _context.SaveChangesAsync();
-            }
-            else{
-                var f = new Turno{
+            var f = new Turno{
                 FechaTurno = DateTime.Now,
                 IdUsuario = Int32.Parse(CookieId),
-                };
-                
-                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
-                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
-                ViewBag.CookieFecha = CookieFecha;
+            };
 
-                _context.Turnos.Add(f);
-                await _context.SaveChangesAsync();
-            }
+            Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
+            var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
+            ViewBag.CookieFecha = CookieFecha;
+
+            _context.Turnos.Add(f);
+            await _context.SaveChangesAsync();
+
+            // Cambie ToList por ToListAsync, se arregla errror - KDAZA
+            var fecha = _context.Turnos.AsQueryable();
+            fecha = fecha.Where(f => f.IdUsuario.ToString() == CookieId);
+            ViewData["turnodata"] = fecha.ToListAsync();
 
             return View();
         }
