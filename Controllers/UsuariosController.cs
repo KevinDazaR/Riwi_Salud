@@ -173,7 +173,7 @@ namespace RiwiSalud.Controllers
 
                 // K: Se crea una nueva instancia de la base de datos Turno y se establece y pasa el valor
 
-                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = CookieId };
+                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = Int32.Parse(CookieId) };
                  
                 // Agregar el nuevo turno al contexto
                 _context.Turnos.Add(nuevoTurno);
@@ -191,7 +191,7 @@ namespace RiwiSalud.Controllers
 
             var f = new Turno{
                 FechaTurno = DateTime.Now,
-                IdUsuario = CookieId,
+                IdUsuario = Int32.Parse(CookieId),
             };
 
             Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
