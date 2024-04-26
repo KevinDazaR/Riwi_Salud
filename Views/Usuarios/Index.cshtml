@@ -12,7 +12,7 @@
             <form asp-controller="Usuarios" asp-action="Index" method="post">
                 <div class="form-group">
                     <label for="TipoDocumento">Seleccione el tipo de documento</label>
-                    <select class="form-control" asp-for="TipoDocumento">
+                    <select class="form-control" asp-for="TipoDocumento" required>
                         <option value="" disabled selected> Tipo de Documento</option>
                         <option value="CC">CC - Cèdula de Ciudadanìa</option>
                         <option value="TI">TI - Tarjeta de Identidad</option>
@@ -22,7 +22,7 @@
                 
                 <div class="form-group mt-3">
                     <label for="NumeroDocumento">Ingrese su nùmero de documento</label>
-                    <input class="form-control" asp-for="NumeroDocumento" placeholder="Ejemplo: 100393213">
+                    <input class="form-control" asp-for="NumeroDocumento" placeholder="Ejemplo: 100393213" required>
                 </div>
                 <div class="form-group text-center mt-3">
                     <button type="submit" class="btn btn-primary">Ingresar</button>

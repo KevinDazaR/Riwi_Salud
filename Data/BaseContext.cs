@@ -12,7 +12,7 @@ namespace RiwiSalud.Data
         
         public DbSet<Turno> Turnos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<UsuarioNoRegistrado> UsuarioNoRegistrados { get; set; }
+        public DbSet<UsuarioNoRegistrado> UsuariosNoRegistrados { get; set; }
         public DbSet<Asesor> Asesores { get; set; }
 
     }
