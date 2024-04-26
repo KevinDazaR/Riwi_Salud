@@ -191,7 +191,7 @@ namespace RiwiSalud.Controllers
 
             var f = new Turno{
                 FechaTurno = DateTime.Now,
-                IdUsuario = Int32.Parse(CookieId),
+                IdUsuario = CookieId,
             };
 
             Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
@@ -201,9 +201,10 @@ namespace RiwiSalud.Controllers
             _context.Turnos.Add(f);
             await _context.SaveChangesAsync();
 
+            // Cambie ToList por ToListAsync, se arregla errror - KDAZA
             var fecha = _context.Turnos.AsQueryable();
-            fecha = fecha.Where(f => f.IdUsuario == int.Parse(CookieId));
-            ViewData["turnodata"] = fecha.ToList();
+            fecha = fecha.Where(f => f.IdUsuario.ToString() == CookieId);
+            ViewData["turnodata"] = fecha.ToListAsync();
 
             return View();
         }
