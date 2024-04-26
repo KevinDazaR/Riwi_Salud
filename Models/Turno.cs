@@ -12,7 +12,5 @@ namespace RiwiSalud.Models
         public int ? IdUsuarioNoRegistrado {get; set;}
         public string ? N_Turno {get; set;}
         public string ? Modulo {get; set;}
-
-        
     }
 }

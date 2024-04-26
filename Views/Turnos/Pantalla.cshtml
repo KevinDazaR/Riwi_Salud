@@ -1,3 +1,5 @@
+@model List<RiwiSalud.Models.Turno>
+
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,12 +17,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @{
+                            bool firstRow = true; // Variable de bandera para indicar si es la primera fila
+                        }
                         @foreach (var turno in Model)
                         {
-                            <tr>
+                            <tr style="@(firstRow ? "background-color: #6d91b5;" : "")">
                                 <td>@turno.N_Turno</td>
-                                <td>7</td>
+                                <td>@turno.Modulo</td>
                             </tr>
+                            {
+                                firstRow = false;
+                            }
                         }
                     </tbody>
                 </table>
