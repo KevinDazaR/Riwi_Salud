@@ -143,6 +143,7 @@ namespace RiwiSalud.Controllers
         }
         public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
+            var contadorNumeroTurno = 0;
 
             var CookieId = HttpContext.Request.Cookies["Id"];
             ViewBag.CookieId = CookieId;
@@ -164,21 +165,27 @@ namespace RiwiSalud.Controllers
             ViewBag.CookieLetrasTurno = CookieLetrasTurno;
 
 
-            for (var i = 1; i < 10; i++)
+            for (var i = 1; i < 5; i++)
             {
                 var numeroTurno = i.ToString();
                 var turnoCompleto =  CookieLetrasTurno + numeroTurno;
 
                 // K: Se crea una nueva instancia de la base de datos Turno y se establece y pasa el valor
+
                  var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = CookieId };
+                 
                 // Agregar el nuevo turno al contexto
                 _context.Turnos.Add(nuevoTurno);
+                Response.Cookies.Append("turnoCompleto", turnoCompleto);
+                var CookieTurnoCompleto = HttpContext.Request.Cookies["turnoCompleto"];
+                ViewBag.CookieTurnoCompleto = CookieTurnoCompleto;
+
             }
 
             // K: Se guardan los cambios en la base de datos de Turnos
             await _context.SaveChangesAsync();
 
-
+            contadorNumeroTurno ++;
             return View();
         }
 
