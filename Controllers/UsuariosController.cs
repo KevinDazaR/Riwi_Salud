@@ -6,15 +6,17 @@ using Microsoft.Extensions.ObjectPool;
 using RiwiSalud.Data;
 using RiwiSalud.Models;
 using System.Linq;
+using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
 
 namespace RiwiSalud.Controllers
 {
-    
+    [Authorize]
     public class UsuariosController : Controller
     {
         /* Conexion con la db */
@@ -32,53 +34,6 @@ namespace RiwiSalud.Controllers
             return View();
         }
     
-
-        [HttpPost]
-        public async Task<IActionResult> Index(string NumeroDocumento, string TipoDocumento)
-        {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
-
-            if (usuario != null && TipoDocumento == usuario.TipoDocumento)
-            {
-                /* Apartado para obtener datos a cookies  */
-                Response.Cookies.Append("Id", usuario.Id.ToString());
-                Response.Cookies.Append("Nombre", usuario.Nombres);
-                Response.Cookies.Append("Documento", usuario.NumeroDocumento);
-                Response.Cookies.Append("TipoDocumento", usuario.TipoDocumento);
-                
-                /* Apartado para listar las cockies */
-                var claims = new List<Claim>{
-                    new Claim(ClaimTypes.Name, usuario.Nombres),
-                    new Claim("Documento", usuario.NumeroDocumento)
-                };
-
-                /* Guardian */
-
-                var claimsIndentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIndentity));
-
-                return RedirectToAction("Menu", "Usuarios");
-            }
-            else
-            {
-                var usuarioNoRegistrado = new UsuarioNoRegistrado
-                {
-                    TipoDocumento = TipoDocumento,
-                    NumeroDocumento = NumeroDocumento
-                };
-
-                _context.UsuariosNoRegistrados.Add(usuarioNoRegistrado);
-                await _context.SaveChangesAsync();
-
-                Response.Cookies.Append("Id", usuarioNoRegistrado.Id.ToString());
-                Response.Cookies.Append("Nombre", "Invitado");
-                Response.Cookies.Append("Documento", usuarioNoRegistrado.NumeroDocumento);
-                Response.Cookies.Append("TipoDocumento", usuarioNoRegistrado.TipoDocumento);
-
-                return RedirectToAction("Menu", "Usuarios");
-            }
-        }
 
         /* Opcion para cerrar sesion  */
  
@@ -109,9 +64,6 @@ namespace RiwiSalud.Controllers
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
-
-            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
-            ViewBag.CookieApellidos = CookieApellidos;
             
             var CookieDocumento = HttpContext.Request.Cookies["Documento"];
             ViewBag.CookieDocumento = CookieDocumento;
@@ -138,6 +90,24 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> MenuInformacion()
+        {
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            return View();
+        }
+
         public async Task<IActionResult> MenuPagos()
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombre"];
