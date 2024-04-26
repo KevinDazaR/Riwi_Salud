@@ -1,7 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RiwiSalud.Data;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +12,9 @@ builder.Services.AddControllersWithViews();
 /* Configuracion de las cookies */
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddCookie(option =>{
-    option.LoginPath = "/Usuarios/Index";
+    option.LoginPath = "/Home/Index";
     option.ExpireTimeSpan = TimeSpan.FromSeconds(20.0);
-    option.AccessDeniedPath = "/Usuarios/Index";
+    option.AccessDeniedPath = "/Home/Index";
 });
 
 builder.Services.AddDbContext<BaseContext>(options =>
@@ -38,13 +39,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
-
 /* Uso de authentication para el guardian */
 app.UseAuthentication();
 
+app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Usuarios}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
