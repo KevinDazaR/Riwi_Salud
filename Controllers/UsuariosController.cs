@@ -31,7 +31,7 @@ namespace RiwiSalud.Controllers
         {
             return View();
         }
-
+    
         /* login ingreso al sistema */
         [HttpPost]
         public async Task<IActionResult> Index(string NumeroDocumento)
@@ -44,6 +44,7 @@ namespace RiwiSalud.Controllers
                 Response.Cookies.Append("Id", usuario.Id.ToString());
                 Response.Cookies.Append("Nombre", usuario.Nombres);
                 Response.Cookies.Append("Documento", usuario.NumeroDocumento);
+                Response.Cookies.Append("TipoDocumento", usuario.TipoDocumento);
                 
                 /* Apartado para listar las cockies */
                 var claims = new List<Claim>{
@@ -74,35 +75,107 @@ namespace RiwiSalud.Controllers
             return RedirectToAction("Index", "Usuarios");
         }
 
-        /* [Authorization]  */
+        /* [Authorize] */
         public async Task<IActionResult> Menu()
         {
             /* Definiendo las Cookies como variables */
 
-            var CookieNombre = HttpContext.Request.Cookies["Nombre"];
-            ViewBag.CookieNombre = CookieNombre;
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
 
             var CookieDocumento = HttpContext.Request.Cookies["Documento"];
             ViewBag.CookieDocumento = CookieDocumento;
+
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
 
             return View();
         }
 
         public async Task<IActionResult> MenuCitasMedicas()
         {
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
             return View();
         }
         public async Task<IActionResult> MenuMedicamentos()
         {
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            
+
             return View();
         }
         public async Task<IActionResult> MenuPagos()
         {
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
             return View();
         }
         public async Task<IActionResult> Turno()
         {
+            var CookieId = HttpContext.Request.Cookies["Id"];
+            ViewBag.CookieId = CookieId;
+
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            var f = new Turno{
+                FechaTurno = DateTime.Now,
+                IdUsuario = Int32.Parse(CookieId),
+            };
+
+            Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
+            var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
+            ViewBag.CookieFecha = CookieFecha;
+
+            _context.Turnos.Add(f);
+            await _context.SaveChangesAsync();
+
+            var fecha = _context.Turnos.AsQueryable();
+            fecha = fecha.Where(f => f.IdUsuario == int.Parse(CookieId));
+            ViewData["turnodata"] = fecha.ToList();
+            
             return View();
+            
         }
 
         // public async Task<IActionResult> Index(string search){

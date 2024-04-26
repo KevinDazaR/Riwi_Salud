@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Turno";
+    var fecha = ViewData["turnodata"] as List<Turno>;
 }
 
 <style>
@@ -168,7 +169,7 @@
             <div class="user-box">
                 <i class="fa-regular fa-user"></i>
                 <p>@ViewBag.CookieTipoDocumento : </p>
-                <p> @ViewBag.CookieDocumento - </p>
+                <p> @ViewBag.CookieDocumento  </p>
                 <p>&nbsp;</p>
                 <p>@ViewBag.CookieNombres</p>
                 <p>&nbsp;</p>
@@ -190,9 +191,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Tu turno es:</h5>
                     <p class="card-text"><b>(MCC)</b> - 013</p>
-                    <p class="card-text"> <b>Usuario:</b>Pepito Pèrez Jimenez</p>
-                    <p class="card-text"> <b>Documento:</b> </p>CC - 100305123</p>
-                    <p class="card-text"> <b>Fecha:</b> 24/04/2024 12:33:56 p.m</p>
+                    <p class="card-text"> <b>Usuario:</b> @ViewBag.CookieNombres </p>
+                    <p class="card-text"> <b>Documento:</b> </p> @ViewBag.CookieTipoDocumento - @ViewBag.CookieDocumento</p>
+                    
+                    <p class="card-text"> <b>Fecha:</b> @ViewBag.CookieFecha </p>
                 </div>
             </div>
 

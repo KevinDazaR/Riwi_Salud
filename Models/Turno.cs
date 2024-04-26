@@ -4,12 +4,13 @@ namespace RiwiSalud.Models
 {
     public class Turno
     {
-        public int Id { get; set; }
-        public DateTime ? FechaTurno {get; set;}
+        public int? Id { get; set; }
+        public DateTime? FechaTurno {get; set;}
 
-       [ForeignKey("IdUsuario")] 
-        public string ? IdUsuario {get; set;}
-        public string ? IdUsuarioNoRegistrado {get; set;}
+      // [ForeignKey("IdUsuario")] 
+        public int? IdUsuario {get; set;}
+        public int? IdUsuarioNoRegistrado {get; set;}
+        public string? N_Turno{get;set;}
 
         
     }
