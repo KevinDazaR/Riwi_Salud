@@ -142,7 +142,7 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
-          public async Task<IActionResult> Turno(string ? LetrasTurno)
+        public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
             var contadorNumeroTurno = 0;
 
@@ -164,9 +164,25 @@ namespace RiwiSalud.Controllers
             Response.Cookies.Append("LetrasTurno", LetrasTurno);
             var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
             ViewBag.CookieLetrasTurno = CookieLetrasTurno;
+            //hace falta consultar por fecha
+            var Turnox = await _context.Turnos.OrderByDescending(x => x.service_abbreviation == LetrasTurno).ToListAsync();
+
+            if(Turnox != null){
+                var TurnoNumero = Int32.Parse(Turnox.N_Turno) + 1;
+
+                 var nuevoTurno = new Turno {
+                     N_Turno = TurnoNumero.ToString(), 
+                     IdUsuario = Int32.Parse(CookieId),
+                     service_abbreviation = LetrasTurno,
+                     FechaTurno = DateTime.Now
+                };
+                 _context.Turnos.Add(nuevoTurno);
+                await _context.SaveChangesAsync();
+            }
+            return Json(Turnox);
 
 
-            for (var i = 1; i < 5; i++)
+         /*   for (var i = 1; i < 3; i++)
             {
                 var numeroTurno = i.ToString();
                 var turnoCompleto =  CookieLetrasTurno + numeroTurno;
@@ -182,7 +198,7 @@ namespace RiwiSalud.Controllers
                 ViewBag.CookieTurnoCompleto = CookieTurnoCompleto;
 
             }
-
+*/
             // K: Se guardan los cambios en la base de datos de Turnos
             await _context.SaveChangesAsync();
 
