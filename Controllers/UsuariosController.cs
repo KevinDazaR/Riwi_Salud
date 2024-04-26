@@ -10,10 +10,11 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RiwiSalud.Controllers
 {
-
+    
     public class UsuariosController : Controller
     {
         /* Conexion con la db */
@@ -30,23 +31,22 @@ namespace RiwiSalud.Controllers
         {
             return View();
         }
-
+    
         /* login ingreso al sistema */
         [HttpPost]
-        public async Task<IActionResult> Index(string TipoDocumento, string NumeroDocumento)
+        public async Task<IActionResult> Index(string NumeroDocumento)
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
 
-            if (usuario != null )
+            if (usuario != null)
             {
-                /* Apartado para obtener datos a cookies */
-
+                /* Apartado para obtener datos a cookies  */
                 Response.Cookies.Append("Id", usuario.Id.ToString());
-                Response.Cookies.Append("Nombres", usuario.Nombres);
-                Response.Cookies.Append("Apellidos", usuario.Apellidos);
+                Response.Cookies.Append("Nombre", usuario.Nombres);
                 Response.Cookies.Append("Documento", usuario.NumeroDocumento);
                 Response.Cookies.Append("TipoDocumento", usuario.TipoDocumento);
-
+                
+                /* Apartado para listar las cockies */
                 var claims = new List<Claim>{
                     new Claim(ClaimTypes.Name, usuario.Nombres),
                     new Claim("Documento", usuario.NumeroDocumento)
@@ -61,32 +61,31 @@ namespace RiwiSalud.Controllers
                 return RedirectToAction("Menu", "Usuarios");
             }
             else
-            {   
-                return RedirectToAction("Index", "Usuarios");
-            };
+            {
+
+                return RedirectToAction("Turno", "Usuarios");
+            }
         }
 
-        /* Opcion para cerrar sesion */
-
+        /* Opcion para cerrar sesion  */
+ 
         public async Task<IActionResult> Salir()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Usuarios");
         }
 
+        /* [Authorize] */
         public async Task<IActionResult> Menu()
         {
             /* Definiendo las Cookies como variables */
 
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
-            ViewBag.CookieNombress = CookieNombres;
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
 
-            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
-            ViewBag.CookieApellidos = CookieApellidos;
-            
             var CookieDocumento = HttpContext.Request.Cookies["Documento"];
             ViewBag.CookieDocumento = CookieDocumento;
-            
+
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
 
@@ -95,7 +94,7 @@ namespace RiwiSalud.Controllers
 
         public async Task<IActionResult> MenuCitasMedicas()
         {
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
 
             var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
@@ -106,12 +105,11 @@ namespace RiwiSalud.Controllers
             
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
-
             return View();
         }
         public async Task<IActionResult> MenuMedicamentos()
         {
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
 
             var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
@@ -122,12 +120,14 @@ namespace RiwiSalud.Controllers
             
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            
 
             return View();
         }
         public async Task<IActionResult> MenuPagos()
         {
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
 
             var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
@@ -142,25 +142,9 @@ namespace RiwiSalud.Controllers
             return View();
         }
 
-        public async Task<IActionResult> MenuInformacion()
+          public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
-            ViewBag.CookieNombres = CookieNombres;
-
-            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
-            ViewBag.CookieApellidos = CookieApellidos;
-            
-            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
-            ViewBag.CookieDocumento = CookieDocumento;
-            
-            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
-            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
-
-            return View();
-        }
-
-        public async Task<IActionResult> Turno(string ? LetrasTurno)
-        {
+            var contadorNumeroTurno = 0;
 
             var CookieId = HttpContext.Request.Cookies["Id"];
             ViewBag.CookieId = CookieId;
@@ -182,24 +166,48 @@ namespace RiwiSalud.Controllers
             ViewBag.CookieLetrasTurno = CookieLetrasTurno;
 
 
-            for (var i = 1; i < 10; i++)
+            for (var i = 1; i < 5; i++)
             {
                 var numeroTurno = i.ToString();
                 var turnoCompleto =  CookieLetrasTurno + numeroTurno;
 
                 // K: Se crea una nueva instancia de la base de datos Turno y se establece y pasa el valor
-                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = CookieId };
+
+                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = Int32.Parse(CookieId) };
+                 
                 // Agregar el nuevo turno al contexto
                 _context.Turnos.Add(nuevoTurno);
+                Response.Cookies.Append("turnoCompleto", turnoCompleto);
+                var CookieTurnoCompleto = HttpContext.Request.Cookies["turnoCompleto"];
+                ViewBag.CookieTurnoCompleto = CookieTurnoCompleto;
+
             }
 
             // K: Se guardan los cambios en la base de datos de Turnos
             await _context.SaveChangesAsync();
 
+            contadorNumeroTurno ++;
+
+
+            var f = new Turno{
+                FechaTurno = DateTime.Now,
+                IdUsuario = Int32.Parse(CookieId),
+            };
+
+            Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
+            var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
+            ViewBag.CookieFecha = CookieFecha;
+
+            _context.Turnos.Add(f);
+            await _context.SaveChangesAsync();
+
+            // Cambie ToList por ToListAsync, se arregla errror - KDAZA
+            var fecha = _context.Turnos.AsQueryable();
+            fecha = fecha.Where(f => f.IdUsuario.ToString() == CookieId);
+            ViewData["turnodata"] = fecha.ToListAsync();
 
             return View();
         }
-
         // public async Task<IActionResult> Index(string search){
         //     //Coleccion de registros u objetos  
         //     var users = from user in _context.Users select user;
