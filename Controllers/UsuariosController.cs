@@ -6,15 +6,17 @@ using Microsoft.Extensions.ObjectPool;
 using RiwiSalud.Data;
 using RiwiSalud.Models;
 using System.Linq;
+using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
 
 namespace RiwiSalud.Controllers
 {
-    
+    [Authorize]
     public class UsuariosController : Controller
     {
         /* Conexion con la db */
@@ -32,6 +34,7 @@ namespace RiwiSalud.Controllers
             return View();
         }
     
+<<<<<<< HEAD
         /* login ingreso al sistema */
         [HttpPost]
         public async Task<IActionResult> Index(string NumeroDocumento)
@@ -66,6 +69,8 @@ namespace RiwiSalud.Controllers
                 return RedirectToAction("Turno", "Usuarios");
             }
         }
+=======
+>>>>>>> ac9a81ff1e100d855d219ccde95dd5012fb4623a
 
         /* Opcion para cerrar sesion  */
  
@@ -96,9 +101,6 @@ namespace RiwiSalud.Controllers
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
-
-            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
-            ViewBag.CookieApellidos = CookieApellidos;
             
             var CookieDocumento = HttpContext.Request.Cookies["Documento"];
             ViewBag.CookieDocumento = CookieDocumento;
@@ -125,6 +127,24 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> MenuInformacion()
+        {
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            ViewBag.CookieNombres = CookieNombres;
+
+            var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
+            ViewBag.CookieApellidos = CookieApellidos;
+            
+            var CookieDocumento = HttpContext.Request.Cookies["Documento"];
+            ViewBag.CookieDocumento = CookieDocumento;
+            
+            var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
+            ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+
+            return View();
+        }
+
         public async Task<IActionResult> MenuPagos()
         {
             var CookieNombres = HttpContext.Request.Cookies["Nombre"];
