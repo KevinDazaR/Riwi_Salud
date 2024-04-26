@@ -15,7 +15,7 @@
                 <hr>
                 <div class="d-flex gap-2 justify-content-center">
                     <i class="mt-1 fas fa-circle-user"></i>
-                    <p>Sandra Fernandez Perez - Asesora</p>
+                    <p> @ViewBag.CookieNombre @ViewBag.CookieApellido - Asesor</p>
                 </div>
                 <div class="text-center">
                     <p>Historial de atenciones</p>
@@ -30,18 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1234567721</th>
-                            <td>Pepito Perez</td>
-                            <td>10:00</td>
-                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
-                        </tr>
-                        <tr>
-                            <th>1234567721</th>
-                            <td>Pepito Perez</td>
-                            <td>10:00</td>
-                            <td><button class="btn btn-info"><i class="fas fa-circle-info"></i></button></td>
-                        </tr>
+                        <!-- Ejemplo de datos para la tabla -->
                         <tr>
                             <th>1234567721</th>
                             <td>Pepito Perez</td>
@@ -53,12 +42,13 @@
                 <div class="text-center">
                     <button class="btn btn-success mt-3">Siguiente Turno</button>
                     <div class="text-end mt-4">
-                        <p>@DateTime.Now</p>
+                        <p id="current-time"></p>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6 bg-light" style="padding: 30px;">
-                <nav class="navbar navbar-expand-lg bg-body bg-dark">
+                <nav class="navbar navbar-expand-lg bg-dark">
                     <div class="container">
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav gap-3">
@@ -72,22 +62,46 @@
                                     <a class="nav-link text-light" href="#">Consultar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Index">Cerrar Sesión</a>
+                                    <a class="nav-link text-danger" asp-controller="Asesores" asp-action="Salir">Cerrar
+                                        Sesión</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
+
                 <div class="container mt-5 text-center">
                     <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
-                    <p>Carlos Perez</p>
+                    <p id="user-name">@ViewBag.Nombre</p>
                     <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
-                    <p>1234567821</p>
+                    <p>@ViewBag.Documento</p>
                     <h4><strong class="text-danger">Servicio:</strong></h4>
                     <p>Pago de Factura</p>
-                    <button class="btn btn-warning mt-3">Finalizar Turno</button>
+                    <form asp-action="FinalizarTurno" asp-controller="Asesores" method="post">
+                        <button type="submit" class="btn btn-warning mt-3">Finalizar Turno</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Actualización de la hora en tiempo real
+        function updateCurrentTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString();
+            document.getElementById("current-time").textContent = formattedTime;
+        }
+        setInterval(updateCurrentTime, 1000);
+        updateCurrentTime(); // Llama la función para actualizar la hora inmediatamente
+
+        // Text-to-Speech para pronunciar el nombre del usuario
+        if ('speechSynthesis' in window) {
+            var synth = window.speechSynthesis;
+            var utterance = new SpeechSynthesisUtterance(document.getElementById("user-name").textContent);
+            synth.speak(utterance); // Pronuncia el nombre del usuario
+        } else {
+            console.warn("Text-to-Speech no es compatible con este navegador");
+        }
+    </script>
 </body>
