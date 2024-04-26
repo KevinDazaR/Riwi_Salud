@@ -4,67 +4,15 @@
 
 <style>
     .container{
-        width: 90%;
-        min-width: 85%;
-        height: 60vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin:auto;
         background-color: rgba(227, 227, 227, 0.215);
-        padding: 10px;
+        padding: 20px;
         border: 1px solid black;
+        margin-top: 60px;
     }
 
     .top-container{
-        width: 100%;
-        display: flex;
         justify-content: space-between;
-        align-items: baseline;
         border-bottom: 1px solid black;
-    }
-    
-    .top-left{
-        width: auto;
-    }
-
-    .top-left nav{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .top-left nav a, .top-left nav span{
-        margin-right: 5px;
-    }
-
-    .top-mid{
-        width: auto;
-    }
-
-    .user-box{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        align-content: center;
-    }
-    .user-box i{
-        font-size: 12px;
-        color:blue;
-        border: 1px solid blue;
-        padding: 4px;
-        border-radius: 50%;
-        margin-right: 5px;
-    }
-
-
-    .top-right{
-        width: auto;
-    }
-
-    .top-right a{
-        text-decoration: none;
     }
 
     .top-right i{
@@ -90,19 +38,11 @@
         transition-duration: 0.2s;
     }
 
-    .container-contain {
-        width: 100%;
-        @* background-color: rgb(200, 255, 3); *@
-        height: 300px;
-    }
-
     h3{
         color: rgb(156, 189, 37);
     }
 
     .container-opciones{
-        height: 100%;
-        display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
@@ -142,7 +82,7 @@
 </style>
 
 <div class="contenedor">
-    <div class="top-container">
+    <div class="top-container d-flex">
         <div class="top-left">
             <nav>
                 <a asp-controller="Usuarios" asp-action="Index">Ingreso</a>
@@ -151,8 +91,8 @@
             </nav>
         </div>
         <div class="top-mid">
-            <div class="user-box">
-                <i class="fa-regular fa-user"></i>
+            <div class="user-box d-flex">
+                <i class="fa-regular fa-circle-user me-2 mt-1"></i>
                 <p>@ViewBag.CookieTipoDocumento : </p>
                 <p> @ViewBag.CookieDocumento - </p>
                 <p>&nbsp;</p>
@@ -162,14 +102,14 @@
             </div>
         </div>
         <div class="top-right">
-             <a asp-controller="Usuarios" asp-action="Salir">
+             <a class="text-decoration-none" asp-controller="Usuarios" asp-action="Salir">
                  <i class="fa-solid fa-x"></i>
             </a>
         </div>
     </div>
 
     <div class="container-contain mt-4">
-        <div class="col container-opciones text-center">
+        <div class="col container-opciones text-center d-flex">
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">

@@ -154,12 +154,15 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
-        public async Task<IActionResult> Turno()
+
+          public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
+            var contadorNumeroTurno = 0;
+
             var CookieId = HttpContext.Request.Cookies["Id"];
             ViewBag.CookieId = CookieId;
 
-            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
+            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
             ViewBag.CookieNombres = CookieNombres;
 
             var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
@@ -170,6 +173,34 @@ namespace RiwiSalud.Controllers
             
             var CookieTipoDocumento = HttpContext.Request.Cookies["TipoDocumento"];
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
+            
+            Response.Cookies.Append("LetrasTurno", LetrasTurno);
+            var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
+            ViewBag.CookieLetrasTurno = CookieLetrasTurno;
+
+
+            for (var i = 1; i < 5; i++)
+            {
+                var numeroTurno = i.ToString();
+                var turnoCompleto =  CookieLetrasTurno + numeroTurno;
+
+                // K: Se crea una nueva instancia de la base de datos Turno y se establece y pasa el valor
+
+                 var nuevoTurno = new Turno { N_Turno = turnoCompleto, IdUsuario = CookieId };
+                 
+                // Agregar el nuevo turno al contexto
+                _context.Turnos.Add(nuevoTurno);
+                Response.Cookies.Append("turnoCompleto", turnoCompleto);
+                var CookieTurnoCompleto = HttpContext.Request.Cookies["turnoCompleto"];
+                ViewBag.CookieTurnoCompleto = CookieTurnoCompleto;
+
+            }
+
+            // K: Se guardan los cambios en la base de datos de Turnos
+            await _context.SaveChangesAsync();
+
+            contadorNumeroTurno ++;
+
 
             if(CookieNombres == "Invitado")
             {
@@ -201,7 +232,6 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
-
         // public async Task<IActionResult> Index(string search){
         //     //Coleccion de registros u objetos  
         //     var users = from user in _context.Users select user;

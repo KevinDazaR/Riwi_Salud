@@ -32,107 +32,37 @@
         flex-direction: column;
     }
 
-    .top-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        border-bottom: 1px solid black;
-    }
-
-    .top-left {
-        width: auto;
-    }
-
-    .top-left nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .top-left nav a,
-    .top-left nav span {
-        margin-right: 5px;
-    }
-
-    .top-mid {
-        width: auto;
-    }
-
-    .user-box {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        align-content: center;
-    }
-
-    .user-box i {
-        font-size: 12px;
+    h2 {
         color: blue;
-        border: 1px solid blue;
-        padding: 4px;
-        border-radius: 50%;
-        margin-right: 5px;
     }
 
-    .top-right {
-        width: auto;
+    .form-group {
+        margin-bottom: 20px;
     }
 
-    .top-right i {
-        font-size: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: red;
-        border: 1px solid red;
-        padding: 5px;
-        border-radius: 50%;
-    }
-
-    .top-right i:hover {
-        font-size: 12px;
-        color: black;
-        background-color: red;
-        border: 1px solid red;
-        cursor: pointer;
-        padding: 6px;
-        border-radius: 40%;
-        transition: cubic-bezier(0.215, 0.610, 0.355, 1);
-        transition-duration: 0.2s;
-    }
-
-    .container-contain {
+    .form-control {
         width: 100%;
-    @*background-color:rgb(200,255,3);*@height: 300px;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
     }
 
-    h3 {
-        color: rgb(156, 189, 37);
+    .form-control:focus {
+        outline: none;
+        border-color: blue;
     }
 
-    .container-opciones {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-
-    }
-
-    .col a {
-        width: 100px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-    }
-
-    .col a:hover {
+    .btn-primary {
         background-color: blue;
         color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: darkblue;
     }
 
     .btn-regresar {
@@ -146,20 +76,27 @@
     <div class="row">
         <div class="col">
             <h2 class="text-primary text-center mb-3">Bienvenido a <b>Riwi Salud</b> - Empleados</h2>
-            <form>
+            <form asp-controller="Asesores" asp-action="Index" method="post">
                 <div class="form-group">
-                    <div class="form-group mt-3">
-                        <label for="exampleFormControlTextarea1">Ingrese su correo corporativo</label>
-                        <input class="form-control" type="text" name="" id="" placeholder="Ejemplo: sandrafepe@riwi.salud.co">
-                    </div>
+                    <label for="correo">Ingrese su correo corporativo</label>
+                    <input class="form-control" type="email" name="Correo" id="correo"
+                        placeholder="Ejemplo: sandrafepe@riwi.salud.co">
+                </div>
 
-                    <div class="form-group mt-3">
-                        <label for="exampleFormControlTextarea1">Ingrese su contraseña</label>
-                        <input class="form-control" type="text" name="" id="" placeholder="***********">
-                    </div>
-                    <div class="form-group d-flex justify-content-center mt-3">
-                        <a asp-controller="Asesores" asp-action="Inicio" class="btn btn-primary">Ingresar</a>
-                    </div>
+                <div class="form-group">
+                    <label for="contrasena">Ingrese su contraseña</label>
+                    <input class="form-control" type="password" name="Contraseña" id="contraseña"
+                        placeholder="***********">
+                </div>
+
+                <div class="form-group d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <a asp-controller="Asesores" asp-action="Registro" class="btn btn-primary"
+                        style="margin-left: 50px;">Registrarse</a>
+                </div>
+
+
+
             </form>
         </div>
     </div>

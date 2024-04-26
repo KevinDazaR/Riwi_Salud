@@ -9,21 +9,27 @@ using System.Linq;
 
 namespace RiwiSalud.Controllers
 {
-    
+
     public class TurnosController : Controller
     {
         /* Conexion con la db */
         public readonly BaseContext _context;
         /* Constructor Turnos */
-        public TurnosController(BaseContext context){
+        public TurnosController(BaseContext context)
+        {
             _context = context;
         }
 
         /* Actions para las vistas  */
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Pantalla()
+        {
+            return View(await _context.Turnos.ToListAsync());
         }
 
         // public async Task<IActionResult> Index(string search){
@@ -54,11 +60,11 @@ namespace RiwiSalud.Controllers
         //     _context.SaveChanges();
         //     //Redireciona a la lista de usuarios
         //     return  RedirectToAction("Index");
-           
+
         // }
 
         // public async Task<IActionResult> Delete(int id){
-            
+
         //     var user = await _context.Users.FindAsync(id); //Buscar el user por su id
         //     _context.Users.Remove(user); //Eliminar el usuario en el Dbset
         //     _context.SaveChanges(); //Guardar los cambios en el context 
@@ -70,7 +76,7 @@ namespace RiwiSalud.Controllers
         // public async Task<IActionResult> Edit(int id){
         //     return View(await _context.Users.FindAsync(id));
         // }
-        
+
         // [HttpPost]
         // public async Task<IActionResult> Update(User user){
 
