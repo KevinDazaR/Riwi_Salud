@@ -116,10 +116,42 @@
                         </div>
                     </form>
                 </div>
+    
+
 
 
 
             </div>
+
+<!-- Vista Inicio -->
+<div class="col-md-4 bg-light" style="padding: 30px; border: solid 1px;">
+    <h3 class="text-center">Turnos prioritarios</h3>
+    <table class="table table-bordered border-dark text-center">
+        <thead class="table table-dark">
+            <tr>
+                <th>Turno</th>
+              @*   <th>Fecha y Hora</th> *@
+                <th>Nombre</th>
+                <th>Abr.Servicio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var turno in ViewBag.UltimosTurnos)
+            {
+                <tr>
+                   
+                    <td>@turno.N_Turno</td>
+                    @* <td>@turno.FechaTurno.ToString("dd/MM/yyyy HH:mm:ss")</td> <!-- Formato para fecha y hora -->  *@
+                    <td>Pepito</td>
+                    <td>@turno.service_abbreviation</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
         </div>
     </div>
 </body>
