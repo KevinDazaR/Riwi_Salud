@@ -114,32 +114,32 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(POR) Pago de Ordenes</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="POR" asp-action="Turno">(POR) Pago de Ordenes</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary"asp-controller="Usuarios" asp-action="Turno">(PCO) Pago de Consulta</a>
+                        <a class="border border-primary"asp-controller="Usuarios" asp-route-LetrasTurno="PCO" asp-action="Turno">(PCO) Pago de Consulta</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PME) Pago de Medicamentos</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="CGI" asp-action="Turno">(CGI) Pago de Medicamentos</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PPP) Pago Plan Particular</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="PPP" asp-action="Turno">(PPP) Pago Plan Particular</a>
                     </div>
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PCP) Certificado de Paz y Salvo</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="PCP" asp-action="Turno">(PCP) Certificado de Paz y Salvo</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a class="border border-primary" asp-controller="Usuarios" asp-action="Turno">(PPC) Pago Plan Complementario</a>
+                        <a class="border border-primary" asp-controller="Usuarios" asp-route-LetrasTurno="PPC" asp-action="Turno">(PPC) Pago Plan Complementario</a>
                     </div>
                 </div>
 
-                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-action="Menu"> < Regresar</a>
+                <a class="btn-regresar text-center" asp-controller="Usuarios" asp-route-LetrasTurno="CGI" asp-action="Menu"> < Regresar</a>
         </div>
     </div>
 </div>

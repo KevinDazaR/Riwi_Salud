@@ -161,9 +161,9 @@ namespace RiwiSalud.Controllers
             ViewBag.CookieTipoDocumento = CookieTipoDocumento;
             
             Response.Cookies.Append("LetrasTurno", LetrasTurno);
-            var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
-            ViewBag.CookieLetrasTurno = CookieLetrasTurno;
+            
             //hace falta consultar por fecha
+
             var dataBase = _context.Turnos.AsQueryable();
             var Turnox = await dataBase.Where(x => x.service_abbreviation == LetrasTurno)
                 .OrderBy(x => x.N_Turno).LastOrDefaultAsync();
@@ -183,6 +183,13 @@ namespace RiwiSalud.Controllers
                     FechaTurno = DateTime.Now
                 };
 
+                var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
+                ViewBag.CookieLetrasTurno = CookieLetrasTurno;
+
+                Response.Cookies.Append("N_Turno", Turnox.N_Turno);
+                var CookieN_Turno = HttpContext.Request.Cookies["N_Turno"];
+                ViewBag.CookieN_Turno = CookieN_Turno;
+
                 Console.WriteLine($"este es de la instancia pa ver q esta guardanndo: {nuevoTurno.N_Turno}");
                 
                 _context.Turnos.Add(nuevoTurno);
@@ -198,7 +205,7 @@ namespace RiwiSalud.Controllers
                 return RedirectToAction("Menu");
             }
 
-            return Json(Turnox);
+            return View();
 
 
 
