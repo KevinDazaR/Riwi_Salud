@@ -68,15 +68,26 @@ namespace RiwiSalud.Controllers
         }
 
 
-        public IActionResult Inicio()
-        {
-            var CookieNombre = HttpContext.Request.Cookies["Nombre"];
-            ViewBag.CookieNombre = CookieNombre;
-            var CookieApellido = HttpContext.Request.Cookies["Apellido"];
-            ViewBag.CookieApellido = CookieApellido;
 
-            return View();
-        }
+public IActionResult Inicio()
+{
+    var ultimosTurnos = _context.Turnos
+        .OrderByDescending(t => t.FechaTurno) // Ordenar por fecha y hora más recientes
+        .Take(5) // Limitar a cinco registros
+        .ToList();
+
+
+    // Pasar datos a la vista mediante ViewBag
+    ViewBag.CookieNombre = HttpContext.Request.Cookies["Nombre"];
+    ViewBag.CookieApellido = HttpContext.Request.Cookies["Apellido"];
+    ViewBag.UltimosTurnos = ultimosTurnos;
+
+    return View(); // Devolver la vista
+}
+
+
+
+
         public async Task<IActionResult> Salir()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
