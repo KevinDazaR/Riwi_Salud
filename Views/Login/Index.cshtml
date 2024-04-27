@@ -1,0 +1,101 @@
+@{
+    ViewData["Title"] = "Login Asesores";
+}
+
+<style>
+    .container {
+        width: 90%;
+        min-width: 85%;
+        height: 60vh;
+        margin: auto;
+        background-color: rgba(227, 227, 227, 0.215);
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .contenedor {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contenedor .row {
+        width: 70%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h2 {
+        color: blue;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: blue;
+    }
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: darkblue;
+    }
+
+    .btn-regresar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<div class="contenedor">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-primary text-center mb-3">Bienvenido a <b>Riwi Salud</b> - Empleados</h2>
+            <form asp-controller="Login" asp-action="Index" method="post">
+                <div class="form-group">
+                    <label for="correo">Ingrese su correo corporativo</label>
+                    <input class="form-control" type="email" name="Correo" id="correo"
+                        placeholder="Ejemplo: sandrafepe@riwi.salud.co">
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Ingrese su contraseña</label>
+                    <input class="form-control" type="password" name="Contraseña" id="contraseña"
+                        placeholder="***********">
+                </div>
+
+                <div class="form-group d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <a asp-controller="Asesores" asp-action="Registro" class="btn btn-primary"
+                        style="margin-left: 50px;">Registrarse</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

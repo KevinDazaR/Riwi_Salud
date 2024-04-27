@@ -132,7 +132,7 @@ namespace RiwiSalud.Controllers
             var CookieId = HttpContext.Request.Cookies["Id"];
             ViewBag.CookieId = CookieId;
 
-            var CookieNombres = HttpContext.Request.Cookies["Nombres"];
+            var CookieNombres = HttpContext.Request.Cookies["Nombre"];
             ViewBag.CookieNombres = CookieNombres;
 
             var CookieApellidos = HttpContext.Request.Cookies["Apellidos"];
@@ -179,9 +179,7 @@ namespace RiwiSalud.Controllers
                 IdUsuarioNoRegistrado = Int32.Parse(CookieId),
                 };
                 
-                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
-                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
-                ViewBag.CookieFecha = CookieFecha;
+                TempData["FechaActual"] = DateTime.Now;
 
                 _context.Turnos.Add(f);
                 await _context.SaveChangesAsync();
@@ -192,9 +190,7 @@ namespace RiwiSalud.Controllers
                 IdUsuario = Int32.Parse(CookieId),
                 };
                 
-                Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
-                var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
-                ViewBag.CookieFecha = CookieFecha;
+                TempData["FechaActual"] = DateTime.Now;
 
                 _context.Turnos.Add(f);
                 await _context.SaveChangesAsync();
@@ -202,6 +198,17 @@ namespace RiwiSalud.Controllers
 
             return View();
         }
+
+        public IActionResult Crear(){
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Crear(Usuario u){
+            _context.Add(u);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // public async Task<IActionResult> Index(string search){
         //     //Coleccion de registros u objetos  
         //     var users = from user in _context.Users select user;

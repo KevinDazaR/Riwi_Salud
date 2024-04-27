@@ -6,14 +6,17 @@ using Microsoft.Extensions.ObjectPool;
 using RiwiSalud.Data;
 using RiwiSalud.Models;
 using System.Linq;
+using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
 
 namespace RiwiSalud.Controllers
 {
-
+    [Authorize]
     public class AsesoresController : Controller
     {
         /* Conexion con la db */
