@@ -70,17 +70,23 @@
                     </div>
                 </nav>
 
-                <div class="container mt-5 text-center">
-                    <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
-                    <p id="user-name">@ViewBag.Nombre</p>
-                    <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
-                    <p>@ViewBag.Documento</p>
-                    <h4><strong class="text-danger">Servicio:</strong></h4>
-                    <p>Pago de Factura</p>
-                    <form asp-action="FinalizarTurno" asp-controller="Asesores" method="post">
-                        <button type="submit" class="btn btn-warning mt-3">Finalizar Turno</button>
-                    </form>
-                </div>
+            <div class="container mt-5 text-center">
+    <h4><strong class="text-danger">Nombre del Usuario:</strong></h4>
+    <p id="user-name">@ViewBag.Nombre</p>
+
+    <h4><strong class="text-danger">Documento de Identidad:</strong></h4>
+    <p>@ViewBag.Documento</p>
+
+
+
+    <h4><strong class="text-danger">Número del Turno:</strong></h4>
+    <p>@ViewBag.N_Turno</p>
+
+    <form asp-action="FinalizarTurno" asp-controller="Asesores" method="post">
+        <button type="submit" class="btn btn-warning mt-3">Finalizar Turno</button>
+    </form>
+</div>
+
             </div>
         </div>
     </div>

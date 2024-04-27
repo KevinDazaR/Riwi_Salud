@@ -33,45 +33,6 @@ namespace RiwiSalud.Controllers
         {
             return View();
         }
-    
-<<<<<<< HEAD
-        /* login ingreso al sistema */
-        [HttpPost]
-        public async Task<IActionResult> Index(string NumeroDocumento)
-        {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == NumeroDocumento);
-
-            if (usuario != null)
-            {
-                /* Apartado para obtener datos a cookies  */
-                Response.Cookies.Append("Id", usuario.Id.ToString());
-                Response.Cookies.Append("Nombre", usuario.Nombres);
-                Response.Cookies.Append("Documento", usuario.NumeroDocumento);
-                Response.Cookies.Append("TipoDocumento", usuario.TipoDocumento);
-                
-                /* Apartado para listar las cockies */
-                var claims = new List<Claim>{
-                    new Claim(ClaimTypes.Name, usuario.Nombres),
-                    new Claim("Documento", usuario.NumeroDocumento)
-                };
-
-                /* Guardian */
-
-                var claimsIndentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIndentity));
-
-                return RedirectToAction("Menu", "Usuarios");
-            }
-            else
-            {
-
-                return RedirectToAction("Turno", "Usuarios");
-            }
-        }
-=======
->>>>>>> ac9a81ff1e100d855d219ccde95dd5012fb4623a
-
         /* Opcion para cerrar sesion  */
  
         public async Task<IActionResult> Salir()

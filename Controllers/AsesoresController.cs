@@ -68,15 +68,26 @@ namespace RiwiSalud.Controllers
         }
 
 
-        public IActionResult Inicio()
-        {
-            var CookieNombre = HttpContext.Request.Cookies["Nombre"];
-            ViewBag.CookieNombre = CookieNombre;
-            var CookieApellido = HttpContext.Request.Cookies["Apellido"];
-            ViewBag.CookieApellido = CookieApellido;
 
-            return View();
-        }
+public IActionResult Inicio()
+{
+    var ultimosTurnos = _context.Turnos
+        .OrderByDescending(t => t.FechaTurno) // Ordenar por fecha y hora más recientes
+        .Take(5) // Limitar a cinco registros
+        .ToList();
+
+
+    // Pasar datos a la vista mediante ViewBag
+    ViewBag.CookieNombre = HttpContext.Request.Cookies["Nombre"];
+    ViewBag.CookieApellido = HttpContext.Request.Cookies["Apellido"];
+    ViewBag.UltimosTurnos = ultimosTurnos;
+
+    return View(); // Devolver la vista
+}
+
+
+
+
         public async Task<IActionResult> Salir()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -126,39 +137,67 @@ namespace RiwiSalud.Controllers
         }
 
 
-        public IActionResult InformacionUsuario(string nombre, string documento)
-        {
-            ViewBag.Nombre = nombre;
-            ViewBag.Documento = documento;
-            var CookieNombre = HttpContext.Request.Cookies["Nombre"];
-            ViewBag.CookieNombre = CookieNombre;
-            var CookieApellido = HttpContext.Request.Cookies["Apellido"];
-            ViewBag.CookieApellido = CookieApellido;
+public IActionResult InformacionUsuario(string nombre, string documento, string nTurno)
+{
+    ViewBag.Nombre = nombre;
+    ViewBag.Documento = documento;
+    ViewBag.N_Turno = nTurno; // Pasar el valor del número de turno
 
-            return View();
-        }
+    var CookieNombre = HttpContext.Request.Cookies["Nombre"];
+    ViewBag.CookieNombre = CookieNombre;
+
+    var CookieApellido = HttpContext.Request.Cookies["Apellido"];
+    ViewBag.CookieApellido = CookieApellido;
+
+    return View();
+}
+
+
 
         // AsesoresController.cs
-        public async Task<IActionResult> BuscarUsuario(string tipoDocumento, string numeroDocumento)
+public async Task<IActionResult> BuscarUsuario(string tipoDocumento, string numeroDocumento)
+{
+    if (string.IsNullOrWhiteSpace(tipoDocumento) || string.IsNullOrWhiteSpace(numeroDocumento))
+    {
+        TempData["ErrorMessage"] = "Por favor, seleccione el tipo de documento y proporcione un número de documento válido.";
+        return RedirectToAction("Inicio", "Asesores");
+    }
+
+    var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => 
+        u.NumeroDocumento == numeroDocumento && 
+        u.TipoDocumento == tipoDocumento);
+
+    if (usuario != null)
+    {
+        // Obtener el IdUsuario de las cookies para encontrar el turno correspondiente
+        var CookieIdUsuario = HttpContext.Request.Cookies["Id"];
+        string nTurno = "No asignado";
+
+        if (int.TryParse(CookieIdUsuario, out int idUsuario))
         {
-            if (string.IsNullOrWhiteSpace(tipoDocumento) || string.IsNullOrWhiteSpace(numeroDocumento))
-            {
-                TempData["ErrorMessage"] = "Por favor, seleccione el tipo de documento y proporcione un número de documento válido.";
-                return RedirectToAction("Inicio", "Asesores");
-            }
+            var turno = await _context.Turnos.FirstOrDefaultAsync(t => t.IdUsuario == idUsuario);
 
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.NumeroDocumento == numeroDocumento && u.TipoDocumento == tipoDocumento);
-
-            if (usuario != null)
+            if (turno != null)
             {
-                return RedirectToAction("InformacionUsuario", new { nombre = usuario.Nombres, documento = usuario.NumeroDocumento });
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Usuario no encontrado.";
-                return RedirectToAction("Inicio", "Asesores");
+                nTurno = turno.N_Turno;
             }
         }
+
+        // Redirigir a InformacionUsuario pasando nombre, documento y nTurno
+        return RedirectToAction("InformacionUsuario", new 
+        {
+            nombre = usuario.Nombres,
+            documento = usuario.NumeroDocumento,
+            nTurno = nTurno
+        });
+    }
+    else
+    {
+        TempData["ErrorMessage"] = "Usuario no encontrado.";
+        return RedirectToAction("Inicio", "Asesores");
+    }
+}
+
 
         public async Task<IActionResult> FinalizarTurno()
         {
