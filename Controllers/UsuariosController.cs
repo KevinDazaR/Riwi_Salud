@@ -164,13 +164,15 @@ namespace RiwiSalud.Controllers
             var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
             ViewBag.CookieLetrasTurno = CookieLetrasTurno;
             //hace falta consultar por fecha
+            var dataBase = _context.Turnos.AsQueryable();
+            var Turnox = await dataBase.Where(x => x.service_abbreviation == LetrasTurno)
+                .OrderBy(x => x.N_Turno).LastOrDefaultAsync();
 
-            var Turnox = await _context.Turnos.OrderBy(x => x.service_abbreviation == LetrasTurno).Last();
-            Console.WriteLine("ESTE ES DE LA CONSULTA A LA BD" ,Turnox);
+            Console.WriteLine($"ESTE ES DE LA CONSULTA A LA BD: {Turnox.N_Turno}");
             if (Turnox != null)
             {
                 var TurnoNumero = Int32.Parse(Turnox.N_Turno) +1;
-                Console.WriteLine( " ESTE ES LA SUMA DE TURNONUMERO", TurnoNumero);
+                Console.WriteLine($" ESTE ES LA SUMA DE TURNONUMERO: {TurnoNumero}");
                 
 
                 var nuevoTurno = new Turno
@@ -181,7 +183,7 @@ namespace RiwiSalud.Controllers
                     FechaTurno = DateTime.Now
                 };
 
-                Console.WriteLine("este es de la instancia pa ver q esta guardanndo", nuevoTurno.N_Turno);
+                Console.WriteLine($"este es de la instancia pa ver q esta guardanndo: {nuevoTurno.N_Turno}");
                 
                 _context.Turnos.Add(nuevoTurno);
 
