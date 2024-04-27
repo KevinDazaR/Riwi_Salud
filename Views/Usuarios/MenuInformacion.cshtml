@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Menù - Citas mèdicas";
+    ViewData["Title"] = "Menù - Informacion General";
 }
 
 <style>
@@ -7,7 +7,7 @@
         background-color: rgba(227, 227, 227, 0.215);
         padding: 20px;
         border: 1px solid black;
-        margin-top: 60px;
+        margin-top: 110px;
     }
 
     .top-container{
@@ -113,37 +113,20 @@
         <h3 class="text-center mt-3">Selecione una opciòn</h3>
                 <div class="row">
                     <div class="col d-flex justify-content-end mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCI) Confirmaciòn de Cita</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(IIU) Informacion de Usuario</a>
                     </div>
 
                     <div class="col d-flex  mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCG) Consulta Mèdico General</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(ISH) Solicitud de Historia Clínica</a>
                     </div>
 
                     <div class="w-100"></div>
 
                     <div class="col d-flex justify-content-end mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCP) Consulta de Psiquiatrìa</a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary" value="(IAD)">(IAD) Actualización de Datos</a>
                     </div>
                     <div class="col d-flex  mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCO) Consulta de Ortopedìa</a>
-                    </div>
-                  
-                    <div class="w-100"></div>
-
-                    <div class="col d-flex justify-content-end  mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCD) Crecimiento y Desarrollo</a>
-                    </div>
-                    <div class="col d-flex mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCC) Consulta de Cardiologìa </a>
-                    </div>
-                    <div class="w-100"></div>
-                    
-                    <div class="col d-flex justify-content-end  mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CCN) Consulta de Neurologìa </a>
-                    </div>
-                    <div class="col d-flex mt-3">
-                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(CNE) Consulta de Neumologìa </a>
+                        <a asp-controller="Usuarios" asp-action="Turno" class="border border-primary">(IPQ) Interponer una PQRS</a>
                     </div>
                 </div>
 

@@ -13,4 +13,5 @@ namespace RiwiSalud.Models
         public string ? Estado {get; set;}
         
     }
+
 }

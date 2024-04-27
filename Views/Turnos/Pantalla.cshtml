@@ -1,14 +1,12 @@
-@{
-    ViewData["Title"] = "Pantalla de Espera";
-}
-<html></html>
+@model List<RiwiSalud.Models.Turno>
+
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-md-4 bg-light" style="padding: 30px; border: solid 1px;">
                 <table class="table table-bordered border-dark text-center">
@@ -19,30 +17,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-info">
-                            <td>(MCE-023)</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>(DCE-022)</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>(DOE-012)</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>(MCE-021)</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>(DCE-020)</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>(DOE-011)</td>
-                            <td>7</td>
-                        </tr>
+                        @{
+                            bool firstRow = true; // Variable de bandera para indicar si es la primera fila
+                        }
+                        @foreach (var turno in Model)
+                        {
+                            <tr style="@(firstRow ? "background-color: #6d91b5;" : "")">
+                                <td>@turno.N_Turno</td>
+                                <td>@turno.Modulo</td>
+                            </tr>
+                            {
+                                firstRow = false;
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -55,11 +42,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-3">
-                        <img class="img-fluid" src="https://media.istockphoto.com/id/1456795358/es/vector/hombre-lavarse-las-manos-banner-de-procedimiento-de-higiene-con-personaje-masculino-lavar.jpg?s=612x612&w=0&k=20&c=QkVoLbCCHUFC8hCYfYToavO2VJ_qFuQOFdRCinpgQSQ=" alt="">
+                        <img class="img-fluid"
+                            src="https://media.istockphoto.com/id/1456795358/es/vector/hombre-lavarse-las-manos-banner-de-procedimiento-de-higiene-con-personaje-masculino-lavar.jpg?s=612x612&w=0&k=20&c=QkVoLbCCHUFC8hCYfYToavO2VJ_qFuQOFdRCinpgQSQ="
+                            alt="">
                     </div>
                     <div class="col-md-6 mt-3 text-center">
                         <h4 class="text-primary">Titulo</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe provident minima aliquid excepturi quis obcaecati deserunt nobis recusandae corporis quaerat veritatis, ducimus natus omnis? Asperiores hic architecto similique repudiandae repellendus?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe provident minima aliquid
+                            excepturi quis obcaecati deserunt nobis recusandae corporis quaerat veritatis, ducimus natus
+                            omnis? Asperiores hic architecto similique repudiandae repellendus?</p>
                         <div class="text-start">
                             <h5 class="text-primary">Tiempo de espera</h5>
                             <p>262 segundos</p>
@@ -68,7 +59,8 @@
                     <div class="text-center">
                         <p class="mt-3">Recuerda lavar tus manos con agua y jabón antes y despues de cada consulta.</p>
                         <div class="bg-danger" style="padding: 1px;">
-                            <p><strong class="text-primary">GUÍA DE TURNOS: </strong>Los turnos tienen 3 letras, cada una de ellas significa la opción que elegiste.</p>
+                            <p><strong class="text-primary">GUÍA DE TURNOS: </strong>Los turnos tienen 3 letras, cada
+                                una de ellas significa la opción que elegiste.</p>
                         </div>
                     </div>
                 </div>
