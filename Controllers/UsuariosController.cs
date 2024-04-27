@@ -144,7 +144,6 @@ namespace RiwiSalud.Controllers
 
         public async Task<IActionResult> Turno(string ? LetrasTurno)
         {
-            var contadorNumeroTurno = 0;
 
             var CookieId = HttpContext.Request.Cookies["Id"];
             ViewBag.CookieId = CookieId;
@@ -165,21 +164,40 @@ namespace RiwiSalud.Controllers
             var CookieLetrasTurno = HttpContext.Request.Cookies["LetrasTurno"];
             ViewBag.CookieLetrasTurno = CookieLetrasTurno;
             //hace falta consultar por fecha
-            var Turnox = await _context.Turnos.OrderByDescending(x => x.service_abbreviation == LetrasTurno).ToListAsync();
 
-            if(Turnox != null){
-                var TurnoNumero = Int32.Parse(Turnox.N_Turno) + 1;
+            var Turnox = await _context.Turnos.OrderBy(x => x.service_abbreviation == LetrasTurno).Last();
+            Console.WriteLine("ESTE ES DE LA CONSULTA A LA BD" ,Turnox);
+            if (Turnox != null)
+            {
+                var TurnoNumero = Int32.Parse(Turnox.N_Turno) +1;
+                Console.WriteLine( " ESTE ES LA SUMA DE TURNONUMERO", TurnoNumero);
+                
 
-                 var nuevoTurno = new Turno {
-                     N_Turno = TurnoNumero.ToString(), 
-                     IdUsuario = Int32.Parse(CookieId),
-                     service_abbreviation = LetrasTurno,
-                     FechaTurno = DateTime.Now
+                var nuevoTurno = new Turno
+                {
+                    N_Turno = TurnoNumero.ToString(), 
+                    IdUsuario = Int32.Parse(CookieId),
+                    service_abbreviation = LetrasTurno,
+                    FechaTurno = DateTime.Now
                 };
-                 _context.Turnos.Add(nuevoTurno);
+
+                Console.WriteLine("este es de la instancia pa ver q esta guardanndo", nuevoTurno.N_Turno);
+                
+                _context.Turnos.Add(nuevoTurno);
+
+                // K: Se guardan los cambios en la base de datos de Turnos
                 await _context.SaveChangesAsync();
+                
+                // return RedirectToAction("Turno");
             }
+
+            else
+            {
+                return RedirectToAction("Menu");
+            }
+
             return Json(Turnox);
+
 
 
          /*   for (var i = 1; i < 3; i++)
@@ -199,23 +217,18 @@ namespace RiwiSalud.Controllers
 
             }
 */
-            // K: Se guardan los cambios en la base de datos de Turnos
-            await _context.SaveChangesAsync();
-
-            contadorNumeroTurno ++;
-
-
-            var f = new Turno{
-                FechaTurno = DateTime.Now,
-                IdUsuario = Int32.Parse(CookieId),
-            };
+     
+            // var f = new Turno{
+            //     FechaTurno = DateTime.Now,
+            //     IdUsuario = Int32.Parse(CookieId),
+            // };
 
             Response.Cookies.Append("FechaActual", DateTime.Now.ToString());
             var CookieFecha = HttpContext.Request.Cookies["FechaActual"];
             ViewBag.CookieFecha = CookieFecha;
 
-            _context.Turnos.Add(f);
-            await _context.SaveChangesAsync();
+            // _context.Turnos.Add(f);
+            // await _context.SaveChangesAsync();
 
             // Cambie ToList por ToListAsync, se arregla errror - KDAZA
             var fecha = _context.Turnos.AsQueryable();
