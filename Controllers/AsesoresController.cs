@@ -27,16 +27,77 @@ namespace RiwiSalud.Controllers
         {
             _context = context;
         }
+        /* Constructor Usuarios */
 
-        public IActionResult Inicio()
+        public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult InformacionUsuario()
+        [HttpPost]
+        public async Task<IActionResult> Index(string Correo, string Contraseña)
         {
-            return View();
+            // Verificar si existe un asesor con el correo y contraseña dados.
+            var asesor = await _context.Asesores.FirstOrDefaultAsync(a => a.Correo == Correo && a.Contraseña == Contraseña);
+
+            if (asesor != null)
+            {
+                // Guardar datos en cookies.
+                Response.Cookies.Append("Id", asesor.Id.ToString());
+                Response.Cookies.Append("Nombre", asesor.Nombres);
+                Response.Cookies.Append("Apellido", asesor.Apellidos);
+                Response.Cookies.Append("Correo", asesor.Correo);
+
+                // Crear lista de claims.
+                var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, asesor.Nombres),
+                new Claim("Apellido", asesor.Apellidos),
+                new Claim("Correo", asesor.Correo),
+            };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+                // Redirigir a la página de inicio de asesores.
+                return RedirectToAction("Inicio", "Asesores");
+            }
+            else
+            {
+                // Si no se encuentra el asesor, redirigir a la página de error o mostrar un mensaje.
+                TempData["ErrorMessage"] = "Correo o contraseña incorrectos.";
+                return RedirectToAction("Index", "Asesores");
+            }
         }
+
+
+
+public IActionResult Inicio()
+{
+    var ultimosTurnos = _context.Turnos
+        .OrderByDescending(t => t.FechaTurno) // Ordenar por fecha y hora más recientes
+        .Take(5) // Limitar a cinco registros
+        .ToList();
+
+
+    // Pasar datos a la vista mediante ViewBag
+    ViewBag.CookieNombre = HttpContext.Request.Cookies["Nombre"];
+    ViewBag.CookieApellido = HttpContext.Request.Cookies["Apellido"];
+    ViewBag.UltimosTurnos = ultimosTurnos;
+
+    return View(); // Devolver la vista
+}
+
+
+
+
+        public async Task<IActionResult> Salir()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Asesores");
+        }
+
         public async Task<IActionResult> Registro()
         {
             return View();
